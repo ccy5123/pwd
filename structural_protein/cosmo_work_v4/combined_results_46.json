@@ -1,0 +1,238 @@
+{
+  "label": "combined_v3_v4_full",
+  "n": 46,
+  "r2": 0.6635776871904352,
+  "rmse": 0.9418922698858414,
+  "rows": [
+    {
+      "name": "n-nonane",
+      "exp": 3.86,
+      "pred": 3.9217403953193304
+    },
+    {
+      "name": "cyclooctane",
+      "exp": 2.94,
+      "pred": 3.2913507347608846
+    },
+    {
+      "name": "cycloheptane",
+      "exp": 2.16,
+      "pred": 3.0011519888899483
+    },
+    {
+      "name": "1-nonene",
+      "exp": 3.54,
+      "pred": 3.617531533818992
+    },
+    {
+      "name": "hept-1-yne",
+      "exp": 1.75,
+      "pred": 2.5730801764275464
+    },
+    {
+      "name": "1-chlorooctane",
+      "exp": 2.93,
+      "pred": 3.5302900104903046
+    },
+    {
+      "name": "dibutylether",
+      "exp": 1.72,
+      "pred": 3.4680777157434743
+    },
+    {
+      "name": "2-octanone",
+      "exp": 1.57,
+      "pred": 2.4846944655695267
+    },
+    {
+      "name": "2-nonanone",
+      "exp": 1.83,
+      "pred": 2.8171778118667774
+    },
+    {
+      "name": "2-decanone",
+      "exp": 2.11,
+      "pred": 3.276043964458976
+    },
+    {
+      "name": "1-nitrohexane",
+      "exp": 1.34,
+      "pred": 2.5084710855813435
+    },
+    {
+      "name": "TBP",
+      "exp": 1.69,
+      "pred": 4.246739167625086
+    },
+    {
+      "name": "1-octanol",
+      "exp": 1.42,
+      "pred": 2.7234807763811877
+    },
+    {
+      "name": "1-nonanol",
+      "exp": 1.97,
+      "pred": 3.080278207059274
+    },
+    {
+      "name": "propylbenzene",
+      "exp": 1.98,
+      "pred": 2.9701079126205037
+    },
+    {
+      "name": "pentylbenzene",
+      "exp": 2.71,
+      "pred": 3.6231261710714144
+    },
+    {
+      "name": "hexylbenzene",
+      "exp": 3.19,
+      "pred": 3.9426524410192894
+    },
+    {
+      "name": "124-TMB",
+      "exp": 1.9,
+      "pred": 2.9466714683138653
+    },
+    {
+      "name": "12-DCB",
+      "exp": 2.02,
+      "pred": 2.7502481042355926
+    },
+    {
+      "name": "1234-TeCB",
+      "exp": 2.8,
+      "pred": 3.5001113189678246
+    },
+    {
+      "name": "1245-TeCB",
+      "exp": 2.94,
+      "pred": 3.52740980513275
+    },
+    {
+      "name": "pentaCB",
+      "exp": 3.35,
+      "pred": 3.899034489362422
+    },
+    {
+      "name": "14-DBB",
+      "exp": 2.18,
+      "pred": 2.9591244919007784
+    },
+    {
+      "name": "dibenzothiophene",
+      "exp": 3.4,
+      "pred": 3.366187786082141
+    },
+    {
+      "name": "phenanthrene",
+      "exp": 3.14,
+      "pred": 3.4449405917967226
+    },
+    {
+      "name": "pyrene",
+      "exp": 3.67,
+      "pred": 3.7111107958884886
+    },
+    {
+      "name": "chrysene",
+      "exp": 4.53,
+      "pred": 4.099172287585495
+    },
+    {
+      "name": "BaP",
+      "exp": 4.88,
+      "pred": 4.47572540955692
+    },
+    {
+      "name": "4-nitroanisole",
+      "exp": 1.38,
+      "pred": 2.2045500328086476
+    },
+    {
+      "name": "valerophenone",
+      "exp": 1.74,
+      "pred": 2.8873515531194682
+    },
+    {
+      "name": "benzophenone",
+      "exp": 2.01,
+      "pred": 2.948999623952734
+    },
+    {
+      "name": "2-nitrotoluene",
+      "exp": 1.27,
+      "pred": 2.288229267852212
+    },
+    {
+      "name": "24-DNT",
+      "exp": 1.22,
+      "pred": 2.3612567300523843
+    },
+    {
+      "name": "4-propylphenol",
+      "exp": 1.69,
+      "pred": 2.6971664444341377
+    },
+    {
+      "name": "4-fluorophenol",
+      "exp": 1.18,
+      "pred": 1.8658869277288666
+    },
+    {
+      "name": "3-chlorophenol",
+      "exp": 1.57,
+      "pred": 2.237432389555539
+    },
+    {
+      "name": "4-chlorophenol",
+      "exp": 1.55,
+      "pred": 2.160509814035366
+    },
+    {
+      "name": "4-bromophenol",
+      "exp": 1.7,
+      "pred": 2.2397138491152053
+    },
+    {
+      "name": "4-iodophenol",
+      "exp": 1.93,
+      "pred": 2.4003892140478724
+    },
+    {
+      "name": "2-phenylphenol",
+      "exp": 2.0,
+      "pred": 3.068198021302307
+    },
+    {
+      "name": "4-chloroaniline",
+      "exp": 1.19,
+      "pred": 1.8770061877038082
+    },
+    {
+      "name": "4-iodoaniline",
+      "exp": 1.66,
+      "pred": 2.137308859731955
+    },
+    {
+      "name": "4-nitroaniline",
+      "exp": 0.84,
+      "pred": 1.2631846235728472
+    },
+    {
+      "name": "NN-diethylaniline",
+      "exp": 1.6,
+      "pred": 3.2418345642341637
+    },
+    {
+      "name": "indole",
+      "exp": 1.4,
+      "pred": 1.9674690220138717
+    },
+    {
+      "name": "diazepam",
+      "exp": 2.01,
+      "pred": 3.623008146146464
+    }
+  ]
+}
