@@ -1,0 +1,31 @@
+{
+  "id": "claim-hyp-muscle-useful",
+  "spec_id": "cosmors-physics-muscle",
+  "answers": "hyp-muscle-useful",
+  "statement": "Parameter-free first-principles COSMO-RS (amino-acid pseudo-solvent) predicts muscle protein-water logK with RMSE <= 1.0 log units",
+  "status": "supported",
+  "confidence": {
+    "type": "credence",
+    "value": 0.05645170660406562,
+    "level": null,
+    "basis": "threshold rule: statistic 'point'=0.941892 <= 1 is met (combine='latest', margin=0.0581077)"
+  },
+  "evidence_set": [
+    {
+      "evidence_id": "evi-cosmors-hyp-muscle-useful-20260617-065538-ba0e9ee2",
+      "role": "supporting"
+    }
+  ],
+  "scope_limitations": "",
+  "mode": "exploratory",
+  "renders_to": null,
+  "history": [
+    {
+      "at": "2026-06-17T06:55:38.856605Z",
+      "from_status": "proposed",
+      "to_status": "supported",
+      "triggered_by": "evi-cosmors-hyp-muscle-useful-20260617-065538-ba0e9ee2",
+      "note": "Initial evaluation via DecisionEngine"
+    }
+  ]
+}
