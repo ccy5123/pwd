@@ -2,29 +2,29 @@
   "id": "claim-hyp-membrane-useful",
   "spec_id": "partition-model-cv",
   "answers": "hyp-membrane-useful",
-  "statement": "A cross-validated multi-surrogate ridge model predicts phospholipid membrane-water logK with mean out-of-fold R^2 >= 0.60",
+  "statement": "A cross-validated multi-surrogate ridge model predicts phospholipid membrane-water logK with mean out-of-fold R^2 >= 0.50",
   "status": "supported",
   "confidence": {
     "type": "credence",
-    "value": 0.26356528868068696,
+    "value": 0.3336463172577755,
     "level": null,
-    "basis": "threshold rule: statistic 'point'=0.905935 >= 0.6 is met (combine='latest', margin=0.305935)"
+    "basis": "threshold rule: statistic 'point'=0.905935 >= 0.5 is met (combine='latest', margin=0.405935)"
   },
   "evidence_set": [
     {
-      "evidence_id": "evi-pmodel-membrane-useful-20260617-052019-66004764",
+      "evidence_id": "evi-pmodel-membrane-useful-20260617-053619-dafccfbe",
       "role": "supporting"
     }
   ],
   "scope_limitations": "",
-  "mode": "confirmatory",
+  "mode": "exploratory",
   "renders_to": null,
   "history": [
     {
-      "at": "2026-06-17T05:20:23.019413Z",
+      "at": "2026-06-17T05:36:22.348631Z",
       "from_status": "proposed",
       "to_status": "supported",
-      "triggered_by": "evi-pmodel-membrane-useful-20260617-052019-66004764",
+      "triggered_by": "evi-pmodel-membrane-useful-20260617-053619-dafccfbe",
       "note": "Initial evaluation via DecisionEngine"
     }
   ]

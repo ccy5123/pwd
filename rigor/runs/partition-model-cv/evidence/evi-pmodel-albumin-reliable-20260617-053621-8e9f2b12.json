@@ -1,0 +1,37 @@
+{
+  "id": "evi-pmodel-albumin-reliable-20260617-053621-8e9f2b12",
+  "created_at": "2026-06-17T05:36:21.014357Z",
+  "spec_id": "partition-model-cv",
+  "kind": "experiment_run",
+  "provenance": {
+    "code_ref": "1c5e1bb932dfbd8f527c725decbfb6ab62bad657:rigor/partition_model_capability.py",
+    "data_ref": "UFZ-LSER PPLFER (measured=albumin_exp); features=all logK_* (compounds_input_table1.csv x xtb_gfn12_predictions.csv)",
+    "data_source": "measured",
+    "seed": null,
+    "environment": "capability:partition-model-cv, sklearn:1.9.0, numpy:2.4.6, pandas:3.0.3",
+    "cost": null
+  },
+  "result": {
+    "type": "quantitative",
+    "point": 0.6438025049692473,
+    "effect_size": null,
+    "ci": [
+      0.5849005511312755,
+      0.6827859390066181
+    ],
+    "p_value": null,
+    "posterior": null,
+    "residual": null,
+    "predictive_error": null,
+    "finding": "{\"phase\": \"albumin\", \"n\": 83, \"n_features\": 72, \"cv_r2_mean\": 0.643803, \"cv_r2_std\": 0.029585, \"cv_r2_p2.5\": 0.584901, \"cv_r2_p97.5\": 0.682786, \"cv_rmse_mean\": 0.51401, \"baseline_single_surrogate_direct_r2\": 0.307376, \"ppLFER_benchmark_rmse\": \"0.32-0.53 (Endo 2013, measured Abraham descriptors)\", \"per_seed_r2\": [0.657162, 0.645849, 0.664377, 0.579336, 0.651861, 0.652202, 0.638155, 0.675759, 0.621502, 0.591051, 0.660322, 0.689144, 0.670043, 0.605754, 0.649141, 0.629316, 0.673298, 0.671574, 0.649912, 0.600293], \"protocol\": \"20x5-fold CV, RidgeCV(logspace(-2.0, 4.0, 25)), median-impute+standardize in-pipeline; R2=1-SS_res/SS_tot OOF\", \"capability\": \"partition-model-cv\", \"statistic\": \"cv_r2_95pct_interval\", \"null_value\": 0.0}",
+    "artifact_ref": null
+  },
+  "bears_on": [
+    {
+      "target_id": "hyp-albumin-reliable",
+      "direction": "supports",
+      "weight": null
+    }
+  ],
+  "supersedes": null
+}

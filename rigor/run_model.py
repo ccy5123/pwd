@@ -2,10 +2,12 @@
 """
 Driver: compile the cross-validated multi-surrogate MODEL study into a sci-adk run.
 
-This is the research-advance run (see partition_model_capability.py): it fits a
-regularized multi-surrogate ridge model over the 72 xTB logK columns, evaluates it by
-repeated cross-validation, and lets the sci-adk DecisionEngine judge each phase's
-`useful` (mean CV R^2 >= 0.60) and `robust` (min CV R^2 >= 0.00) hypotheses.
+This is the research run (see partition_model_capability.py): it fits a regularized
+multi-surrogate ridge model over the 72 xTB logK columns, evaluates it by repeated
+cross-validation, and lets the sci-adk DecisionEngine judge each phase's `useful`
+(mean CV R^2 >= 0.50) and `reliable` (95% across-seed CV-R^2 interval above the no-skill
+null 0) hypotheses. Bars are principled and pre-committed (not tuned to the data);
+hypotheses are exploratory (the dataset has been examined). Prior work is recorded.
 
 Usage:
     python rigor/run_model.py

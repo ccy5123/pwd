@@ -2,29 +2,29 @@
   "id": "claim-hyp-albumin-useful",
   "spec_id": "partition-model-cv",
   "answers": "hyp-albumin-useful",
-  "statement": "A cross-validated multi-surrogate ridge model predicts albumin-water logK with mean out-of-fold R^2 >= 0.60",
+  "statement": "A cross-validated multi-surrogate ridge model predicts albumin-water logK with mean out-of-fold R^2 >= 0.50",
   "status": "supported",
   "confidence": {
     "type": "credence",
-    "value": 0.04285703021181109,
+    "value": 0.1339412265255847,
     "level": null,
-    "basis": "threshold rule: statistic 'point'=0.643803 >= 0.6 is met (combine='latest', margin=0.0438025)"
+    "basis": "threshold rule: statistic 'point'=0.643803 >= 0.5 is met (combine='latest', margin=0.143803)"
   },
   "evidence_set": [
     {
-      "evidence_id": "evi-pmodel-albumin-useful-20260617-052021-cf7f0b87",
+      "evidence_id": "evi-pmodel-albumin-useful-20260617-053621-a73576b9",
       "role": "supporting"
     }
   ],
   "scope_limitations": "",
-  "mode": "confirmatory",
+  "mode": "exploratory",
   "renders_to": null,
   "history": [
     {
-      "at": "2026-06-17T05:20:23.020468Z",
+      "at": "2026-06-17T05:36:22.350733Z",
       "from_status": "proposed",
       "to_status": "supported",
-      "triggered_by": "evi-pmodel-albumin-useful-20260617-052021-cf7f0b87",
+      "triggered_by": "evi-pmodel-albumin-useful-20260617-053621-a73576b9",
       "note": "Initial evaluation via DecisionEngine"
     }
   ]

@@ -1,0 +1,31 @@
+{
+  "id": "claim-hyp-storage-reliable",
+  "spec_id": "partition-model-cv",
+  "answers": "hyp-storage-reliable",
+  "statement": "That storage lipid-water model is reliably better than no-skill: the 95% across-seed CV-R^2 interval lies entirely above 0.00",
+  "status": "supported",
+  "confidence": {
+    "type": "credence",
+    "value": 0.9559029652311366,
+    "level": null,
+    "basis": "interval rule: CI=[0.720382, 0.951173] above null_value=0 (support_side='above', combine='latest')"
+  },
+  "evidence_set": [
+    {
+      "evidence_id": "evi-pmodel-storage-reliable-20260617-053620-60217aa1",
+      "role": "supporting"
+    }
+  ],
+  "scope_limitations": "",
+  "mode": "exploratory",
+  "renders_to": null,
+  "history": [
+    {
+      "at": "2026-06-17T05:36:22.350179Z",
+      "from_status": "proposed",
+      "to_status": "supported",
+      "triggered_by": "evi-pmodel-storage-reliable-20260617-053620-60217aa1",
+      "note": "Initial evaluation via DecisionEngine"
+    }
+  ]
+}
