@@ -1,0 +1,31 @@
+{
+  "id": "claim-hyp-storage-useful",
+  "spec_id": "partition-model-cv",
+  "answers": "hyp-storage-useful",
+  "statement": "A cross-validated multi-surrogate ridge model predicts storage lipid-water logK with mean out-of-fold R^2 >= 0.60",
+  "status": "supported",
+  "confidence": {
+    "type": "credence",
+    "value": 0.2578173471829489,
+    "level": null,
+    "basis": "threshold rule: statistic 'point'=0.89816 >= 0.6 is met (combine='latest', margin=0.29816)"
+  },
+  "evidence_set": [
+    {
+      "evidence_id": "evi-pmodel-storage-useful-20260617-052021-7a4faa16",
+      "role": "supporting"
+    }
+  ],
+  "scope_limitations": "",
+  "mode": "confirmatory",
+  "renders_to": null,
+  "history": [
+    {
+      "at": "2026-06-17T05:20:23.020016Z",
+      "from_status": "proposed",
+      "to_status": "supported",
+      "triggered_by": "evi-pmodel-storage-useful-20260617-052021-7a4faa16",
+      "note": "Initial evaluation via DecisionEngine"
+    }
+  ]
+}

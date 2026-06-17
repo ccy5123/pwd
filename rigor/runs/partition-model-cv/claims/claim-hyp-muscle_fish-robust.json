@@ -1,0 +1,31 @@
+{
+  "id": "claim-hyp-muscle_fish-robust",
+  "spec_id": "partition-model-cv",
+  "answers": "hyp-muscle_fish-robust",
+  "statement": "That muscle protein-water (fish) model is robust to resampling: min out-of-fold R^2 over 20 CV repeats >= 0.00",
+  "status": "supported",
+  "confidence": {
+    "type": "credence",
+    "value": 0.21311136849340828,
+    "level": null,
+    "basis": "threshold rule: statistic 'point'=0.239669 >= 0 is met (combine='latest', margin=0.239669)"
+  },
+  "evidence_set": [
+    {
+      "evidence_id": "evi-pmodel-muscle_fish-robust-20260617-052023-ddac8fe4",
+      "role": "supporting"
+    }
+  ],
+  "scope_limitations": "",
+  "mode": "confirmatory",
+  "renders_to": null,
+  "history": [
+    {
+      "at": "2026-06-17T05:20:23.021951Z",
+      "from_status": "proposed",
+      "to_status": "supported",
+      "triggered_by": "evi-pmodel-muscle_fish-robust-20260617-052023-ddac8fe4",
+      "note": "Initial evaluation via DecisionEngine"
+    }
+  ]
+}
