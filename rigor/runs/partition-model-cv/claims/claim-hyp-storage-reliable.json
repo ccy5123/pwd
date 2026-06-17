@@ -6,13 +6,13 @@
   "status": "supported",
   "confidence": {
     "type": "credence",
-    "value": 0.9559029652311366,
+    "value": 0.9559031669623356,
     "level": null,
-    "basis": "interval rule: CI=[0.720382, 0.951173] above null_value=0 (support_side='above', combine='latest')"
+    "basis": "interval rule: CI=[0.720383, 0.951173] above null_value=0 (support_side='above', combine='latest')"
   },
   "evidence_set": [
     {
-      "evidence_id": "evi-pmodel-storage-reliable-20260617-055048-3bdf1ecd",
+      "evidence_id": "evi-pmodel-storage-reliable-20260617-061636-7a81647f",
       "role": "supporting"
     }
   ],
@@ -21,10 +21,10 @@
   "renders_to": null,
   "history": [
     {
-      "at": "2026-06-17T05:50:50.095964Z",
+      "at": "2026-06-17T06:16:36.632736Z",
       "from_status": "proposed",
       "to_status": "supported",
-      "triggered_by": "evi-pmodel-storage-reliable-20260617-055048-3bdf1ecd",
+      "triggered_by": "evi-pmodel-storage-reliable-20260617-061636-7a81647f",
       "note": "Initial evaluation via DecisionEngine"
     }
   ]

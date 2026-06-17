@@ -6,13 +6,13 @@
   "status": "supported",
   "confidence": {
     "type": "credence",
-    "value": 0.9999999951419436,
+    "value": 0.9999999951410818,
     "level": null,
-    "basis": "interval rule: CI=[0.875067, 0.92078] above null_value=0 (support_side='above', combine='latest')"
+    "basis": "interval rule: CI=[0.875066, 0.92078] above null_value=0 (support_side='above', combine='latest')"
   },
   "evidence_set": [
     {
-      "evidence_id": "evi-pmodel-membrane-reliable-20260617-055046-92214831",
+      "evidence_id": "evi-pmodel-membrane-reliable-20260617-061636-20cada82",
       "role": "supporting"
     }
   ],
@@ -21,10 +21,10 @@
   "renders_to": null,
   "history": [
     {
-      "at": "2026-06-17T05:50:50.095080Z",
+      "at": "2026-06-17T06:16:36.632099Z",
       "from_status": "proposed",
       "to_status": "supported",
-      "triggered_by": "evi-pmodel-membrane-reliable-20260617-055046-92214831",
+      "triggered_by": "evi-pmodel-membrane-reliable-20260617-061636-20cada82",
       "note": "Initial evaluation via DecisionEngine"
     }
   ]

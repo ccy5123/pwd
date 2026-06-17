@@ -1,0 +1,28 @@
+{
+  "id": "evi-pw-decision-20260617-061637-c5994a04",
+  "created_at": "2026-06-17T06:16:37.206173Z",
+  "spec_id": "partition-model-cv",
+  "kind": "prior_work_decision",
+  "provenance": {
+    "code_ref": "prior_work:skip",
+    "data_ref": null,
+    "data_source": null,
+    "seed": null,
+    "environment": "prior-work decision (Spec-time trigger); no search performed",
+    "cost": null
+  },
+  "result": {
+    "type": "qualitative",
+    "point": null,
+    "effect_size": null,
+    "ci": null,
+    "p_value": null,
+    "posterior": null,
+    "residual": null,
+    "predictive_error": null,
+    "finding": "skipped: Prior art searched via agent web_search (June 2026); citations in LITERATURE evidence. Endo/Brown/Goss 2013 ES&T 10.1021/es401772m (dataset source; PP-LFER RMSE 0.32-0.53 = benchmark); JCIM 2024 10.1021/acs.jcim.4c01289; ES&T 2024 10.1021/acs.est.4c01994; Ehlert 2021 JCTC 10.1021/acs.jctc.1c00471. paperforge OA acquisition unavailable in sandbox. Novelty: in-silico xTB-only model recovers protein phases the single-surrogate route missed; below PP-LFER.",
+    "artifact_ref": null
+  },
+  "bears_on": [],
+  "supersedes": null
+}

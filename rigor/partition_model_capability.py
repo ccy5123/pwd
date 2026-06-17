@@ -36,7 +36,6 @@ from __future__ import annotations
 import json
 import math
 import subprocess
-import warnings
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable, List, Optional
@@ -63,16 +62,23 @@ from sci_adk.core.spec import (
 
 from partition_capability import PHASES, Phase  # noqa: E402
 
+# Pure science (no sci_adk dep) — shared by the in-process and Docker executors so the
+# statistics are identical; only the container is a seam (the science is never faked).
+from partition_cv import (  # noqa: E402
+    ALPHAS as _ALPHAS,
+    N_FOLDS as _N_FOLDS,
+    N_SEEDS as _N_SEEDS,
+    compute_cv_payload,
+)
+
 PARTITION_MODEL_CAPABILITY_ID = "partition-model-cv"
 _DEFAULT_SPEC_ID = "partition-model-cv"
+_DOCKER_IMAGE = "sci-adk-partition"
 
 # Principled, pre-committed bars (copied into rule params; judging path reads them
 # only from there, D1). 0.50 = majority of out-of-sample variance; 0.0 = no-skill null.
 _USEFUL_R2 = 0.50
 _NULL_R2 = 0.00
-_N_SEEDS = 20
-_N_FOLDS = 5
-_ALPHAS = (-2.0, 4.0, 25)
 
 # Prior art recorded at Spec time (resolves the discovery checkpoint substance).
 _PRIOR_WORK = {
@@ -223,39 +229,63 @@ def build_partition_model_spec(spec_id: str = _DEFAULT_SPEC_ID) -> Spec:
 
 
 # ---------------------------------------------------------------------------
-# Experiment.
+# Execution seam: Docker-backed (provenance stamps the image id) with an in-process
+# fallback. Both call the SAME pure science (partition_cv.compute_cv_payload), so the
+# statistics are identical -- only the container is a seam (the science is never faked).
+# This mirrors sci-adk's own T1Executor pattern (adapter/t1_capability.py).
 # ---------------------------------------------------------------------------
-def _coef_det(y, yhat) -> float:
-    import numpy as np
+_CONTAINER_SCRIPT = """
+import sys, json
+sys.path.insert(0, "/workspace/rigor")
+from partition_cv import compute_cv_payload
+print(json.dumps(compute_cv_payload(
+    "/workspace/data/compounds_input_table1.csv",
+    "/workspace/results/xtb_gfn12_predictions.csv")))
+"""
 
-    y = np.asarray(y, float); yhat = np.asarray(yhat, float)
-    ss_res = float(np.sum((y - yhat) ** 2)); ss_tot = float(np.sum((y - np.mean(y)) ** 2))
-    return float("nan") if ss_tot == 0 else 1.0 - ss_res / ss_tot
+
+def _docker_status(image: str):
+    """('ok', image_id) iff the daemon is up AND the image exists; else
+    ('unavailable', reason). Never raises -- a missing daemon must not break the run."""
+    try:
+        info = subprocess.run(["docker", "info"], capture_output=True, text=True, timeout=15)
+        if info.returncode != 0:
+            return ("unavailable", "docker daemon not running")
+    except FileNotFoundError:
+        return ("unavailable", "docker CLI not found")
+    except Exception as e:  # noqa: BLE001
+        return ("unavailable", f"docker info failed: {e}")
+    try:
+        img = subprocess.run(["docker", "images", "-q", image], capture_output=True, text=True, timeout=15)
+        iid = img.stdout.strip()
+        if not iid:
+            return ("unavailable", f"image '{image}' not built (docker build -t {image} rigor/)")
+        return ("ok", iid)
+    except Exception as e:  # noqa: BLE001
+        return ("unavailable", f"docker images failed: {e}")
 
 
-def _cv_scores(X, y):
-    import numpy as np
-    from sklearn.impute import SimpleImputer
-    from sklearn.linear_model import RidgeCV
-    from sklearn.model_selection import KFold, cross_val_predict
-    from sklearn.pipeline import Pipeline
-    from sklearn.preprocessing import StandardScaler
+def _run_cv(root: Path, exp_csv: Path, pred_csv: Path):
+    """Compute the CV payload through the Docker seam when available, else in-process.
 
-    alphas = np.logspace(*_ALPHAS)
-    r2s, rmses = [], []
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
-        for seed in range(_N_SEEDS):
-            kf = KFold(n_splits=_N_FOLDS, shuffle=True, random_state=seed)
-            pipe = Pipeline([
-                ("imp", SimpleImputer(strategy="median")),
-                ("sc", StandardScaler()),
-                ("ridge", RidgeCV(alphas=alphas)),
-            ])
-            yhat = cross_val_predict(pipe, X, y, cv=kf)
-            r2s.append(_coef_det(y, yhat))
-            rmses.append(float(np.sqrt(np.mean((np.asarray(y, float) - yhat) ** 2))))
-    return np.asarray(r2s, float), np.asarray(rmses, float)
+    Returns (payload, exec_info). exec_info names which executor ran (+ the image id, or
+    the fallback reason) so the Evidence provenance records the execution environment.
+    """
+    status, detail = _docker_status(_DOCKER_IMAGE)
+    if status == "ok":
+        try:
+            from sci_adk.runner.docker_executor import DockerExecutor
+
+            ex = DockerExecutor(image_name=_DOCKER_IMAGE, workspace_dir=root)
+            run = ex.execute_python(_CONTAINER_SCRIPT)
+            if run.get("success") and run.get("stdout"):
+                payload = json.loads(run["stdout"].strip().splitlines()[-1])
+                image_id = (run.get("provenance") or {}).get("image_id") or detail
+                return payload, {"executor": f"docker:{_DOCKER_IMAGE}", "image_id": image_id}
+            detail = f"docker run failed (returncode={run.get('returncode')})"
+        except Exception as e:  # noqa: BLE001
+            detail = f"docker execution error: {e}"
+    return compute_cv_payload(str(exp_csv), str(pred_csv)), {"executor": "in-process", "reason": detail}
 
 
 def partition_model_experiment(
@@ -268,9 +298,15 @@ def partition_model_experiment(
 
     def _run(spec: Spec, workspace_dir: Path) -> List[EvidenceItem]:
         import numpy as np
-        import pandas as pd
 
-        commit = _git_commit(root); env = _environment()
+        commit = _git_commit(root)
+        # Run the CV through the execution seam (Docker if available, else in-process);
+        # exec_info records which executor ran so it lands in every Evidence's provenance.
+        payload, exec_info = _run_cv(root, exp_csv, pred_csv)
+        executor = exec_info.get("executor", "in-process")
+        extra = (f"image_id={exec_info['image_id']}" if exec_info.get("image_id")
+                 else f"fallback={exec_info.get('reason')}")
+        env = f"{_environment()}; executor={executor}, {extra}"
         items: List[EvidenceItem] = []
 
         # (0) Prior-work as a LITERATURE record (append-only; resolves discovery substance).
@@ -289,29 +325,18 @@ def partition_model_experiment(
         )
         _save_evidence(lit, spec, workspace_dir); items.append(lit)
 
-        exp = pd.read_csv(exp_csv); pred = pd.read_csv(pred_csv)
-        exp["CAS"] = exp["CAS"].astype(str).str.strip()
-        pred["cas"] = pred["cas"].astype(str).str.strip()
-        logk_cols = [c for c in pred.columns if c.startswith("logK_")]
-        merged = exp.merge(pred[["cas"] + logk_cols], left_on="CAS", right_on="cas", how="inner")
-        Xall = merged[logk_cols].apply(pd.to_numeric, errors="coerce")
-
         for ph in PHASES:
-            y_all = pd.to_numeric(merged[ph.exp_col], errors="coerce")
-            mask = y_all.notna().to_numpy()
-            y = y_all[mask].to_numpy(float); X = Xall[mask].to_numpy(float)
-            surrogate = pd.to_numeric(merged[ph.surrogate_col], errors="coerce")[mask].to_numpy(float)
+            st = payload[ph.key]
+            r2s = np.asarray(st["r2s"], float)
+            rmses = np.asarray(st["rmses"], float)
+            field = st["field"]                 # [[col, r2], ...] sorted desc
+            n = int(st["n"]); nfeat = int(st["n_features"])
+            baseline = float(st["baseline_direct_r2"])
 
-            # Anti-method-shopping (F3): record the FULL single-surrogate field -- every
-            # one of the 72 surrogates' direct R^2 -- as one measured OBSERVATION, so the
-            # toolkit's "best surrogate per phase" cannot be cherry-picked: the whole field
-            # (winners AND losers) is on the append-only record, not just the winner.
-            field = []
-            for col in logk_cols:
-                s = pd.to_numeric(merged[col], errors="coerce")[mask].to_numpy(float)
-                if np.isfinite(s).all() and np.std(s) > 0:
-                    field.append((col, round(_coef_det(s, y), 6)))
-            field.sort(key=lambda t: t[1], reverse=True)
+            # Anti-method-shopping (F3): the FULL single-surrogate field -- every one of
+            # the 72 surrogates' direct R^2 -- recorded as one measured OBSERVATION, so the
+            # toolkit's "best surrogate per phase" cannot be cherry-picked (winners AND
+            # losers are on the append-only record, not just the winner).
             scan_ev = EvidenceItem(
                 id=_evidence_id(f"{ph.key}-surrogate-scan"),
                 created_at=datetime.now(timezone.utc), spec_id=spec.id,
@@ -320,7 +345,7 @@ def partition_model_experiment(
                 result=Result(type="qualitative", finding=json.dumps({
                     "phase": ph.key, "what": "full single-surrogate direct-R2 field (all 72)",
                     "purpose": "anti method-shopping: record every attempt, not just the best",
-                    "n": int(len(y)), "n_surrogates": len(field),
+                    "n": n, "n_surrogates": len(field),
                     "best": field[0] if field else None,
                     "worst": field[-1] if field else None,
                     "all_surrogates_r2": field,
@@ -329,14 +354,11 @@ def partition_model_experiment(
             )
             _save_evidence(scan_ev, spec, workspace_dir); items.append(scan_ev)
 
-            r2s, rmses = _cv_scores(X, y)
             mean_r2 = float(np.mean(r2s)); std_r2 = float(np.std(r2s))
             p2_5, p97_5 = (float(v) for v in np.percentile(r2s, [2.5, 97.5]))
-            baseline = _coef_det(y, surrogate)
-            n = int(len(y))
 
             common = {
-                "phase": ph.key, "n": n, "n_features": int(X.shape[1]),
+                "phase": ph.key, "n": n, "n_features": nfeat,
                 "cv_r2_mean": round(mean_r2, 6), "cv_r2_std": round(std_r2, 6),
                 "cv_r2_p2.5": round(p2_5, 6), "cv_r2_p97.5": round(p97_5, 6),
                 "cv_rmse_mean": round(float(np.mean(rmses)), 6),

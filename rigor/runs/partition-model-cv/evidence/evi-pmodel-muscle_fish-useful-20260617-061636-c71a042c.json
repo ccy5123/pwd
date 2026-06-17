@@ -1,19 +1,19 @@
 {
-  "id": "evi-pmodel-muscle_fish-useful-20260617-055050-d465c8b8",
-  "created_at": "2026-06-17T05:50:50.092910Z",
+  "id": "evi-pmodel-muscle_fish-useful-20260617-061636-c71a042c",
+  "created_at": "2026-06-17T06:16:36.630524Z",
   "spec_id": "partition-model-cv",
   "kind": "experiment_run",
   "provenance": {
-    "code_ref": "fdecea3dd73bc3390696f12082bc2d19008d61f5:rigor/partition_model_capability.py",
+    "code_ref": "8a4dc120cadf4b0d1001e72f05ff40c672f5a9b2:rigor/partition_model_capability.py",
     "data_ref": "UFZ-LSER PPLFER (measured=muscle_fish_exp); features=all logK_* (compounds_input_table1.csv x xtb_gfn12_predictions.csv)",
     "data_source": "measured",
     "seed": null,
-    "environment": "capability:partition-model-cv, sklearn:1.9.0, numpy:2.4.6, pandas:3.0.3",
+    "environment": "capability:partition-model-cv, sklearn:1.9.0, numpy:2.4.6, pandas:3.0.3; executor=in-process, fallback=docker daemon not running",
     "cost": null
   },
   "result": {
     "type": "quantitative",
-    "point": 0.6478716917714883,
+    "point": 0.6478717000000002,
     "effect_size": null,
     "ci": null,
     "p_value": null,

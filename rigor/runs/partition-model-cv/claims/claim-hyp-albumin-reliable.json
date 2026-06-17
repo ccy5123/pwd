@@ -6,13 +6,13 @@
   "status": "supported",
   "confidence": {
     "type": "credence",
-    "value": 0.9974594157996323,
+    "value": 0.9974594003275854,
     "level": null,
     "basis": "interval rule: CI=[0.584901, 0.682786] above null_value=0 (support_side='above', combine='latest')"
   },
   "evidence_set": [
     {
-      "evidence_id": "evi-pmodel-albumin-reliable-20260617-055048-ac3a4bf0",
+      "evidence_id": "evi-pmodel-albumin-reliable-20260617-061636-3c700375",
       "role": "supporting"
     }
   ],
@@ -21,10 +21,10 @@
   "renders_to": null,
   "history": [
     {
-      "at": "2026-06-17T05:50:50.096397Z",
+      "at": "2026-06-17T06:16:36.633332Z",
       "from_status": "proposed",
       "to_status": "supported",
-      "triggered_by": "evi-pmodel-albumin-reliable-20260617-055048-ac3a4bf0",
+      "triggered_by": "evi-pmodel-albumin-reliable-20260617-061636-3c700375",
       "note": "Initial evaluation via DecisionEngine"
     }
   ]

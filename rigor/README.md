@@ -78,10 +78,12 @@ kernel's **designed entry point**, honoring its core disciplines:
 | **Prior work recorded** | `LITERATURE` + `PRIOR_WORK_DECISION` Evidence; novelty reframed against PP-LFER. |
 | **Generalization gate** | This is a **second domain** (after T-1) plugged into the kernel **with no kernel edit** — the roadmap's generalization gate (`design/adoption-roadmap.md` §6). |
 | **In-session only** | No autonomous LLM call; the numeric/interval rules judge for free. |
+| **Docker execution seam** | The CV runs through an executor seam mirroring sci-adk's `T1Executor`: Docker-backed when a daemon + the `sci-adk-partition` image are present (provenance stamps the **image id**), else an in-process fallback. The pure science (`partition_cv.py`, no sci-adk dep) is identical either way — only the container is a seam. Each Evidence records which executor ran. |
 
-Remaining disclosed deviation: the experiment runs **in-process**, not inside sci-adk's
-`sci-adk-python-base` Docker seam (provenance has git commit + lib versions, not a
-container image id).
+This sandbox has no Docker daemon, so the committed run used the **in-process fallback**
+— recorded honestly in provenance (`executor=in-process, fallback=docker daemon not
+running`). On a Docker host (`docker build -t sci-adk-partition rigor/` first), the same
+`python rigor/run_model.py` runs the CV inside the container and stamps the image id.
 
 ## Files
 
@@ -105,14 +107,25 @@ python rigor/run_model.py                       # the research step
 sci-adk verify rigor/runs/partition-model-cv    # REPRODUCED per claim; exit 0
 ```
 
+Run the experiment inside the Docker seam (on a Docker-enabled host) so provenance
+stamps the container image id:
+
+```bash
+docker build -t sci-adk-partition rigor/        # numpy/pandas/scikit-learn, version-pinned
+python rigor/run_model.py                        # auto-detects the daemon + image -> runs in-container
+# provenance environment then reads: executor=docker:sci-adk-partition, image_id=<sha>
+```
+
 ## Remaining deviations / limitations (recorded in the Spec + here)
 
 - **Exploratory, not confirmatory** on this dataset (it has been examined). A genuine
   confirmatory test needs an untouched external validation set or a locked hold-out.
 - **Below the PP-LFER benchmark** (RMSE 0.32–0.53); the contribution is cheap in-silico
   descriptors, not accuracy.
-- **Execution seam:** run in-process, not inside sci-adk's `sci-adk-python-base` Docker
-  image, so provenance records git commit + library versions but not a container image
-  id (the intended production seam).
+- **Execution seam:** the Docker-backed executor is implemented (`sci-adk-partition`
+  image + `partition_cv.py` running in-container, image id stamped); this sandbox has no
+  Docker daemon so the committed run used the in-process fallback (recorded in
+  provenance). The Docker path is validated up to the `docker run` call (sci-adk's own
+  `DockerExecutor`); only an actual container launch is unexercised here.
 - **muscle sets are small** (n ≈ 45) → the muscle-chicken reliability is inconclusive;
   more measured data or feature reduction is the next step.
