@@ -1,10 +1,10 @@
 {
-  "id": "evi-pmodel-muscle_chicken-reliable-20260617-053621-e7ec6bc5",
-  "created_at": "2026-06-17T05:36:21.702262Z",
+  "id": "evi-pmodel-muscle_chicken-reliable-20260617-055049-0aa68b3c",
+  "created_at": "2026-06-17T05:50:49.426901Z",
   "spec_id": "partition-model-cv",
   "kind": "experiment_run",
   "provenance": {
-    "code_ref": "1c5e1bb932dfbd8f527c725decbfb6ab62bad657:rigor/partition_model_capability.py",
+    "code_ref": "fdecea3dd73bc3390696f12082bc2d19008d61f5:rigor/partition_model_capability.py",
     "data_ref": "UFZ-LSER PPLFER (measured=muscle_chicken_exp); features=all logK_* (compounds_input_table1.csv x xtb_gfn12_predictions.csv)",
     "data_source": "measured",
     "seed": null,

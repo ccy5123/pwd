@@ -12,7 +12,7 @@
   },
   "evidence_set": [
     {
-      "evidence_id": "evi-pmodel-muscle_chicken-useful-20260617-053621-9867e94a",
+      "evidence_id": "evi-pmodel-muscle_chicken-useful-20260617-055049-dfba78e7",
       "role": "supporting"
     }
   ],
@@ -21,10 +21,10 @@
   "renders_to": null,
   "history": [
     {
-      "at": "2026-06-17T05:36:22.351644Z",
+      "at": "2026-06-17T05:50:50.096907Z",
       "from_status": "proposed",
       "to_status": "supported",
-      "triggered_by": "evi-pmodel-muscle_chicken-useful-20260617-053621-9867e94a",
+      "triggered_by": "evi-pmodel-muscle_chicken-useful-20260617-055049-dfba78e7",
       "note": "Initial evaluation via DecisionEngine"
     }
   ]

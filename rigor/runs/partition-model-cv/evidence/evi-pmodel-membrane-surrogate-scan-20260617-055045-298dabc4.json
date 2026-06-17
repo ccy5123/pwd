@@ -1,0 +1,28 @@
+{
+  "id": "evi-pmodel-membrane-surrogate-scan-20260617-055045-298dabc4",
+  "created_at": "2026-06-17T05:50:45.642325Z",
+  "spec_id": "partition-model-cv",
+  "kind": "observation",
+  "provenance": {
+    "code_ref": "fdecea3dd73bc3390696f12082bc2d19008d61f5:rigor/partition_model_capability.py",
+    "data_ref": "UFZ-LSER PPLFER (measured=membrane_exp); features=all logK_* (compounds_input_table1.csv x xtb_gfn12_predictions.csv)",
+    "data_source": "measured",
+    "seed": null,
+    "environment": "capability:partition-model-cv, sklearn:1.9.0, numpy:2.4.6, pandas:3.0.3",
+    "cost": null
+  },
+  "result": {
+    "type": "qualitative",
+    "point": null,
+    "effect_size": null,
+    "ci": null,
+    "p_value": null,
+    "posterior": null,
+    "residual": null,
+    "predictive_error": null,
+    "finding": "{\"phase\": \"membrane\", \"what\": \"full single-surrogate direct-R2 field (all 72)\", \"purpose\": \"anti method-shopping: record every attempt, not just the best\", \"n\": 207, \"n_surrogates\": 72, \"best\": [\"logK_GFN2_alpb_woctanol\", 0.722753], \"worst\": [\"logK_GFN1_alpb_ethanol\", -1.480995], \"all_surrogates_r2\": [[\"logK_GFN2_alpb_woctanol\", 0.722753], [\"logK_GFN1_alpb_benzaldehyde\", 0.704186], [\"logK_GFN2_gbsa_cs2\", 0.699785], [\"logK_GFN1_alpb_ethyl_acetate\", 0.682655], [\"logK_GFN2_alpb_cs2\", 0.679589], [\"logK_GFN2_gbsa_acetonitrile\", 0.670864], [\"logK_GFN1_alpb_methanol\", 0.665901], [\"logK_GFN1_alpb_furane\", 0.661452], [\"logK_GFN1_alpb_toluene\", 0.631881], [\"logK_GFN1_alpb_acetonitrile\", 0.630314], [\"logK_GFN1_alpb_dioxane\", 0.630016], [\"logK_GFN1_alpb_benzene\", 0.629523], [\"logK_GFN1_alpb_chcl3\", 0.626747], [\"logK_GFN1_alpb_thf\", 0.624884], [\"logK_GFN1_alpb_ch2cl2\", 0.624565], [\"logK_GFN1_alpb_aniline\", 0.61188], [\"logK_GFN2_alpb_benzene\", 0.611171], [\"logK_GFN1_alpb_ether\", 0.602694], [\"logK_GFN1_gbsa_benzene\", 0.600884], [\"logK_GFN1_gbsa_toluene\", 0.600884], [\"logK_GFN2_gbsa_benzene\", 0.589269], [\"logK_GFN2_gbsa_toluene\", 0.589269], [\"logK_GFN1_alpb_cs2\", 0.588563], [\"logK_GFN2_alpb_octanol\", 0.585131], [\"logK_GFN1_gbsa_cs2\", 0.584424], [\"logK_GFN1_alpb_woctanol\", 0.581767], [\"logK_GFN2_alpb_toluene\", 0.581748], [\"logK_GFN2_alpb_furane\", 0.578196], [\"logK_GFN2_alpb_benzaldehyde\", 0.570175], [\"logK_GFN2_alpb_ethanol\", 0.555882], [\"logK_GFN2_alpb_acetonitrile\", 0.550782], [\"logK_GFN2_alpb_methanol\", 0.538512], [\"logK_GFN2_alpb_ch2cl2\", 0.517424], [\"logK_GFN2_alpb_ethyl_acetate\", 0.511578], [\"logK_GFN2_alpb_hexane\", 0.506723], [\"logK_GFN2_gbsa_thf\", 0.484581], [\"logK_GFN1_gbsa_ether\", 0.467891], [\"logK_GFN2_alpb_aniline\", 0.462848], [\"logK_GFN2_alpb_chcl3\", 0.460614], [\"logK_GFN2_alpb_ether\", 0.455253], [\"logK_GFN2_gbsa_ether\", 0.433531], [\"logK_GFN2_gbsa_chcl3\", 0.404748], [\"logK_GFN1_alpb_nitromethane\", 0.401812], [\"logK_GFN2_gbsa_hexane\", 0.390082], [\"logK_GFN1_gbsa_ch2cl2\", 0.383889], [\"logK_GFN1_gbsa_chcl3\", 0.383889], [\"logK_GFN2_alpb_nitromethane\", 0.353948], [\"logK_GFN1_gbsa_acetonitrile\", 0.345532], [\"logK_GFN1_gbsa_dmso\", 0.343109], [\"logK_GFN1_alpb_dmf\", 0.333386], [\"logK_GFN2_gbsa_acetone\", 0.324694], [\"logK_GFN1_alpb_hexane\", 0.312781], [\"logK_GFN2_gbsa_ch2cl2\", 0.308925], [\"logK_GFN1_alpb_octanol\", 0.293454], [\"logK_GFN1_alpb_acetone\", 0.277149], [\"logK_GFN2_gbsa_dmf\", 0.246323], [\"logK_GFN2_alpb_dioxane\", 0.244103], [\"logK_GFN2_alpb_hexadecane\", 0.198382], [\"logK_GFN1_gbsa_acetone\", 0.193599], [\"logK_GFN1_alpb_phenol\", 0.152155], [\"logK_GFN2_alpb_acetone\", 0.120491], [\"logK_GFN1_gbsa_thf\", 0.118678], [\"logK_GFN1_alpb_dmso\", 0.113293], [\"logK_GFN2_alpb_thf\", 0.094462], [\"logK_GFN1_alpb_hexadecane\", 0.072833], [\"logK_GFN2_gbsa_dmso\", 0.011417], [\"logK_GFN1_gbsa_methanol\", -0.083735], [\"logK_GFN2_alpb_dmf\", -0.151273], [\"logK_GFN2_gbsa_methanol\", -0.286468], [\"logK_GFN2_alpb_dmso\", -0.297268], [\"logK_GFN2_alpb_phenol\", -0.30156], [\"logK_GFN1_alpb_ethanol\", -1.480995]]}",
+    "artifact_ref": null
+  },
+  "bears_on": [],
+  "supersedes": null
+}

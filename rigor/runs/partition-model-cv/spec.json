@@ -1,6 +1,6 @@
 {
   "id": "partition-model-cv",
-  "created_at": "2026-06-17T05:36:16.126734Z",
+  "created_at": "2026-06-17T05:50:44.425095Z",
   "version": 1,
   "raw_proposal": {
     "background": "The partition-toolkit's single-surrogate xTB screening predicts lipid phases well but reports protein phases (albumin, muscle) as unpredictable (R^2 ~ 0), using ONE uncalibrated solvent surrogate scored by resubstitution. PRIOR WORK (recorded as Evidence): multi-descriptor PP-LFER models of these exact phases are established -- Endo/Brown/Goss 2013 (this dataset's source) reaches RMSE 0.32-0.53 log units. So 'predictable by a multi-descriptor model' is NOT novel; the open question is whether a fully in-silico xTB-only surrogate model (no measured Abraham descriptors) can recover the protein phases.",

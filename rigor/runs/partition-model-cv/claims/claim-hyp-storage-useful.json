@@ -12,7 +12,7 @@
   },
   "evidence_set": [
     {
-      "evidence_id": "evi-pmodel-storage-useful-20260617-053620-4a68a05a",
+      "evidence_id": "evi-pmodel-storage-useful-20260617-055048-7b74dd10",
       "role": "supporting"
     }
   ],
@@ -21,10 +21,10 @@
   "renders_to": null,
   "history": [
     {
-      "at": "2026-06-17T05:36:22.349793Z",
+      "at": "2026-06-17T05:50:50.095723Z",
       "from_status": "proposed",
       "to_status": "supported",
-      "triggered_by": "evi-pmodel-storage-useful-20260617-053620-4a68a05a",
+      "triggered_by": "evi-pmodel-storage-useful-20260617-055048-7b74dd10",
       "note": "Initial evaluation via DecisionEngine"
     }
   ]

@@ -1,0 +1,28 @@
+{
+  "id": "evi-pmodel-muscle_fish-surrogate-scan-20260617-055049-04b0d35e",
+  "created_at": "2026-06-17T05:50:49.444943Z",
+  "spec_id": "partition-model-cv",
+  "kind": "observation",
+  "provenance": {
+    "code_ref": "fdecea3dd73bc3390696f12082bc2d19008d61f5:rigor/partition_model_capability.py",
+    "data_ref": "UFZ-LSER PPLFER (measured=muscle_fish_exp); features=all logK_* (compounds_input_table1.csv x xtb_gfn12_predictions.csv)",
+    "data_source": "measured",
+    "seed": null,
+    "environment": "capability:partition-model-cv, sklearn:1.9.0, numpy:2.4.6, pandas:3.0.3",
+    "cost": null
+  },
+  "result": {
+    "type": "qualitative",
+    "point": null,
+    "effect_size": null,
+    "ci": null,
+    "p_value": null,
+    "posterior": null,
+    "residual": null,
+    "predictive_error": null,
+    "finding": "{\"phase\": \"muscle_fish\", \"what\": \"full single-surrogate direct-R2 field (all 72)\", \"purpose\": \"anti method-shopping: record every attempt, not just the best\", \"n\": 45, \"n_surrogates\": 72, \"best\": [\"logK_GFN1_alpb_hexadecane\", 0.524776], \"worst\": [\"logK_GFN1_alpb_ethanol\", -6.248923], \"all_surrogates_r2\": [[\"logK_GFN1_alpb_hexadecane\", 0.524776], [\"logK_GFN2_alpb_hexadecane\", 0.500204], [\"logK_GFN1_alpb_octanol\", 0.430969], [\"logK_GFN1_alpb_hexane\", 0.347552], [\"logK_GFN2_gbsa_hexane\", 0.21024], [\"logK_GFN1_alpb_woctanol\", 0.041327], [\"logK_GFN2_alpb_hexane\", -0.064584], [\"logK_GFN2_gbsa_cs2\", -0.138848], [\"logK_GFN1_alpb_cs2\", -0.161693], [\"logK_GFN2_alpb_octanol\", -0.244085], [\"logK_GFN1_gbsa_cs2\", -0.34693], [\"logK_GFN1_alpb_toluene\", -0.416737], [\"logK_GFN2_alpb_nitromethane\", -0.451544], [\"logK_GFN2_gbsa_acetonitrile\", -0.471013], [\"logK_GFN1_alpb_nitromethane\", -0.471266], [\"logK_GFN2_alpb_cs2\", -0.521357], [\"logK_GFN2_alpb_woctanol\", -0.546635], [\"logK_GFN1_gbsa_acetonitrile\", -0.561857], [\"logK_GFN2_alpb_toluene\", -0.597703], [\"logK_GFN1_gbsa_dmso\", -0.617256], [\"logK_GFN2_gbsa_benzene\", -0.622605], [\"logK_GFN2_gbsa_toluene\", -0.622605], [\"logK_GFN1_alpb_benzene\", -0.696268], [\"logK_GFN1_alpb_methanol\", -0.720513], [\"logK_GFN2_gbsa_ether\", -0.850138], [\"logK_GFN2_alpb_benzene\", -0.880545], [\"logK_GFN1_alpb_chcl3\", -0.903718], [\"logK_GFN1_alpb_furane\", -0.921973], [\"logK_GFN1_alpb_ch2cl2\", -1.033311], [\"logK_GFN1_alpb_acetonitrile\", -1.062889], [\"logK_GFN2_alpb_benzaldehyde\", -1.066639], [\"logK_GFN1_alpb_aniline\", -1.122999], [\"logK_GFN2_alpb_furane\", -1.217698], [\"logK_GFN1_alpb_benzaldehyde\", -1.238314], [\"logK_GFN2_alpb_ch2cl2\", -1.256013], [\"logK_GFN1_gbsa_acetone\", -1.257448], [\"logK_GFN2_alpb_acetonitrile\", -1.365805], [\"logK_GFN1_gbsa_benzene\", -1.416176], [\"logK_GFN1_gbsa_toluene\", -1.416176], [\"logK_GFN2_alpb_methanol\", -1.418889], [\"logK_GFN2_alpb_chcl3\", -1.441929], [\"logK_GFN2_gbsa_chcl3\", -1.443115], [\"logK_GFN2_gbsa_acetone\", -1.587661], [\"logK_GFN2_alpb_phenol\", -1.591635], [\"logK_GFN1_alpb_phenol\", -1.62069], [\"logK_GFN2_alpb_ethanol\", -1.630842], [\"logK_GFN1_alpb_ether\", -1.635607], [\"logK_GFN1_gbsa_methanol\", -1.692486], [\"logK_GFN1_alpb_ethyl_acetate\", -1.711269], [\"logK_GFN2_gbsa_thf\", -1.749966], [\"logK_GFN1_alpb_dioxane\", -1.787245], [\"logK_GFN2_gbsa_ch2cl2\", -1.809698], [\"logK_GFN2_alpb_aniline\", -1.816129], [\"logK_GFN2_gbsa_methanol\", -1.829628], [\"logK_GFN2_alpb_ethyl_acetate\", -1.883369], [\"logK_GFN1_alpb_thf\", -1.973506], [\"logK_GFN2_gbsa_dmso\", -2.101339], [\"logK_GFN2_gbsa_dmf\", -2.199031], [\"logK_GFN1_gbsa_ch2cl2\", -2.497029], [\"logK_GFN1_gbsa_chcl3\", -2.497029], [\"logK_GFN2_alpb_ether\", -2.576737], [\"logK_GFN1_gbsa_ether\", -2.869573], [\"logK_GFN1_alpb_acetone\", -3.214542], [\"logK_GFN2_alpb_dioxane\", -3.472613], [\"logK_GFN2_alpb_acetone\", -3.505972], [\"logK_GFN2_alpb_thf\", -3.657549], [\"logK_GFN1_alpb_dmf\", -3.659129], [\"logK_GFN1_alpb_dmso\", -3.980965], [\"logK_GFN2_alpb_dmf\", -4.173639], [\"logK_GFN2_alpb_dmso\", -4.302139], [\"logK_GFN1_gbsa_thf\", -4.903157], [\"logK_GFN1_alpb_ethanol\", -6.248923]]}",
+    "artifact_ref": null
+  },
+  "bears_on": [],
+  "supersedes": null
+}

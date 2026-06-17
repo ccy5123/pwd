@@ -1,0 +1,28 @@
+{
+  "id": "evi-pmodel-albumin-surrogate-scan-20260617-055048-2c6d33d1",
+  "created_at": "2026-06-17T05:50:48.071994Z",
+  "spec_id": "partition-model-cv",
+  "kind": "observation",
+  "provenance": {
+    "code_ref": "fdecea3dd73bc3390696f12082bc2d19008d61f5:rigor/partition_model_capability.py",
+    "data_ref": "UFZ-LSER PPLFER (measured=albumin_exp); features=all logK_* (compounds_input_table1.csv x xtb_gfn12_predictions.csv)",
+    "data_source": "measured",
+    "seed": null,
+    "environment": "capability:partition-model-cv, sklearn:1.9.0, numpy:2.4.6, pandas:3.0.3",
+    "cost": null
+  },
+  "result": {
+    "type": "qualitative",
+    "point": null,
+    "effect_size": null,
+    "ci": null,
+    "p_value": null,
+    "posterior": null,
+    "residual": null,
+    "predictive_error": null,
+    "finding": "{\"phase\": \"albumin\", \"what\": \"full single-surrogate direct-R2 field (all 72)\", \"purpose\": \"anti method-shopping: record every attempt, not just the best\", \"n\": 83, \"n_surrogates\": 72, \"best\": [\"logK_GFN1_alpb_woctanol\", 0.456822], \"worst\": [\"logK_GFN1_alpb_ethanol\", -1.914311], \"all_surrogates_r2\": [[\"logK_GFN1_alpb_woctanol\", 0.456822], [\"logK_GFN2_gbsa_hexane\", 0.417833], [\"logK_GFN1_alpb_hexane\", 0.402034], [\"logK_GFN2_alpb_octanol\", 0.397113], [\"logK_GFN2_alpb_woctanol\", 0.360423], [\"logK_GFN2_alpb_hexadecane\", 0.356592], [\"logK_GFN1_alpb_octanol\", 0.342572], [\"logK_GFN2_alpb_hexane\", 0.333294], [\"logK_GFN1_alpb_hexadecane\", 0.324399], [\"logK_GFN1_alpb_cs2\", 0.272395], [\"logK_GFN1_alpb_nitromethane\", 0.249013], [\"logK_GFN1_alpb_toluene\", 0.238509], [\"logK_GFN1_gbsa_acetonitrile\", 0.21687], [\"logK_GFN1_gbsa_dmso\", 0.197132], [\"logK_GFN2_alpb_nitromethane\", 0.192761], [\"logK_GFN2_alpb_toluene\", 0.155143], [\"logK_GFN2_gbsa_cs2\", 0.152167], [\"logK_GFN1_alpb_benzene\", 0.145561], [\"logK_GFN1_alpb_methanol\", 0.141479], [\"logK_GFN2_gbsa_acetonitrile\", 0.137565], [\"logK_GFN1_gbsa_cs2\", 0.085824], [\"logK_GFN2_gbsa_benzene\", 0.082761], [\"logK_GFN2_gbsa_toluene\", 0.082761], [\"logK_GFN2_alpb_cs2\", 0.060347], [\"logK_GFN1_alpb_chcl3\", 0.050894], [\"logK_GFN1_gbsa_methanol\", 0.042349], [\"logK_GFN1_alpb_acetonitrile\", 0.03981], [\"logK_GFN2_alpb_benzene\", 0.033471], [\"logK_GFN2_alpb_acetonitrile\", 0.022414], [\"logK_GFN1_alpb_benzaldehyde\", -0.006216], [\"logK_GFN2_alpb_methanol\", -0.008926], [\"logK_GFN1_alpb_furane\", -0.012686], [\"logK_GFN2_alpb_benzaldehyde\", -0.029554], [\"logK_GFN1_alpb_ch2cl2\", -0.053889], [\"logK_GFN1_alpb_aniline\", -0.068748], [\"logK_GFN1_gbsa_benzene\", -0.083678], [\"logK_GFN1_gbsa_toluene\", -0.083678], [\"logK_GFN2_alpb_furane\", -0.083833], [\"logK_GFN2_alpb_ethanol\", -0.105163], [\"logK_GFN2_gbsa_ether\", -0.106563], [\"logK_GFN1_gbsa_acetone\", -0.124243], [\"logK_GFN2_alpb_aniline\", -0.141472], [\"logK_GFN1_alpb_ether\", -0.149281], [\"logK_GFN2_alpb_ch2cl2\", -0.186269], [\"logK_GFN2_alpb_phenol\", -0.194547], [\"logK_GFN2_alpb_chcl3\", -0.204221], [\"logK_GFN2_gbsa_methanol\", -0.2298], [\"logK_GFN2_gbsa_acetone\", -0.253526], [\"logK_GFN2_alpb_ethyl_acetate\", -0.326614], [\"logK_GFN2_gbsa_chcl3\", -0.333762], [\"logK_GFN1_alpb_ethyl_acetate\", -0.351106], [\"logK_GFN2_gbsa_thf\", -0.358967], [\"logK_GFN1_alpb_thf\", -0.376862], [\"logK_GFN1_alpb_dioxane\", -0.438736], [\"logK_GFN2_alpb_ether\", -0.451329], [\"logK_GFN2_gbsa_ch2cl2\", -0.476887], [\"logK_GFN2_gbsa_dmso\", -0.486679], [\"logK_GFN2_gbsa_dmf\", -0.561042], [\"logK_GFN1_alpb_phenol\", -0.606191], [\"logK_GFN1_gbsa_ch2cl2\", -0.697316], [\"logK_GFN1_gbsa_chcl3\", -0.697316], [\"logK_GFN1_gbsa_ether\", -0.856332], [\"logK_GFN1_alpb_acetone\", -0.866228], [\"logK_GFN2_alpb_thf\", -0.909294], [\"logK_GFN2_alpb_dioxane\", -0.912542], [\"logK_GFN2_alpb_acetone\", -0.948598], [\"logK_GFN2_alpb_dmf\", -1.157398], [\"logK_GFN2_alpb_dmso\", -1.177287], [\"logK_GFN1_alpb_dmf\", -1.292012], [\"logK_GFN1_alpb_dmso\", -1.516056], [\"logK_GFN1_gbsa_thf\", -1.838159], [\"logK_GFN1_alpb_ethanol\", -1.914311]]}",
+    "artifact_ref": null
+  },
+  "bears_on": [],
+  "supersedes": null
+}

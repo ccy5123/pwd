@@ -63,6 +63,26 @@ accuracy advance.
   is *not reliably distinguishable from no-skill* — an honest "inconclusive", recorded as
   a first-class outcome rather than averaged away.
 
+## How this run follows the sci-adk methodology
+
+sci-adk is a **referee, not a player**: it builds the rigor kernel and *borrows* the
+experiment as a capability from the in-session agent. This run is driven through the
+kernel's **designed entry point**, honoring its core disciplines:
+
+| Discipline | How this run honors it |
+|---|---|
+| **Driven via the real seam** | `run_model.py` registers the capability in sci-adk's adapter registry and invokes **`sci-adk run --capability partition-model-cv`** (`sci_adk.cli.main`) — not a hand-rolled compiler call. The engine renders every verdict. |
+| **Engine = source of truth** | SUPPORTED/PROPOSED are the `DecisionEngine`'s, from frozen rules (e.g. muscle-chicken `reliable` = PROPOSED is the interval rule mapping a CI-containing-null → NEUTRAL, not a choice of mine). |
+| **Anti-HARKing (S1/S3)** | Bars (0.50, null 0) are principled and pre-committed; hypotheses honestly `exploratory` (the dataset was examined). |
+| **Anti-method-shopping (F3)** | The **full single-surrogate field — all 72 surrogates' R² per phase — is recorded** as an append-only OBSERVATION (`*-surrogate-scan`), so the toolkit's "best surrogate" winner cannot be cherry-picked: winners *and* losers are on the record. |
+| **Prior work recorded** | `LITERATURE` + `PRIOR_WORK_DECISION` Evidence; novelty reframed against PP-LFER. |
+| **Generalization gate** | This is a **second domain** (after T-1) plugged into the kernel **with no kernel edit** — the roadmap's generalization gate (`design/adoption-roadmap.md` §6). |
+| **In-session only** | No autonomous LLM call; the numeric/interval rules judge for free. |
+
+Remaining disclosed deviation: the experiment runs **in-process**, not inside sci-adk's
+`sci-adk-python-base` Docker seam (provenance has git commit + lib versions, not a
+container image id).
+
 ## Files
 
 - `proposal.md` — four-pane pre-registration of the baseline study (EN + KR).

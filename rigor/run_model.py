@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
-Driver: compile the cross-validated multi-surrogate MODEL study into a sci-adk run.
+Driver = the sci-adk composition root for the partition-model capability.
 
-This is the research run (see partition_model_capability.py): it fits a regularized
-multi-surrogate ridge model over the 72 xTB logK columns, evaluates it by repeated
-cross-validation, and lets the sci-adk DecisionEngine judge each phase's `useful`
-(mean CV R^2 >= 0.50) and `reliable` (95% across-seed CV-R^2 interval above the no-skill
-null 0) hypotheses. Bars are principled and pre-committed (not tuned to the data);
-hypotheses are exploratory (the dataset has been examined). Prior work is recorded.
+This drives sci-adk through its DESIGNED entry point (rigor-shell-architecture §3, F3):
+it registers the partition-model capability in the adapter registry, then invokes the
+real `sci-adk run --capability partition-model-cv` CLI -- the same path the kernel uses
+for its own T-1 demo. The kernel resolves the ExperimentFn from the registry and renders
+the verdicts itself; this script never judges and never calls an LLM (in-session-only).
+
+So "is this actually run with sci-adk?" -> yes: the verdicts come out of
+`sci_adk.cli.main(["run", "--capability", ...])`, not a hand-rolled compiler call.
 
 Usage:
     python rigor/run_model.py
@@ -24,12 +26,12 @@ REPO_ROOT = RIGOR_DIR.parent
 sys.path.insert(0, str(RIGOR_DIR))
 
 from partition_model_capability import (  # noqa: E402
-    build_partition_model_spec,
-    partition_model_experiment,
+    PARTITION_MODEL_CAPABILITY_ID,
+    partition_model_provider,
 )
 
-from sci_adk.core.validity import ValidityHalt  # noqa: E402
-from sci_adk.loop.compiler import ResearchCompiler  # noqa: E402
+import sci_adk.cli as sci_adk_cli  # noqa: E402
+from sci_adk.adapter import registry  # noqa: E402
 
 
 def main() -> int:
@@ -40,24 +42,18 @@ def main() -> int:
             print(f"error: required data file not found: {p}", file=sys.stderr)
             return 2
 
-    spec = build_partition_model_spec()
-    experiment = partition_model_experiment(exp_csv, pred_csv, repo_root=REPO_ROOT)
+    # Composition root: register the capability behind the adapter seam, then let the
+    # real sci-adk CLI resolve + run it (idempotent if already registered).
+    if PARTITION_MODEL_CAPABILITY_ID not in registry.available():
+        registry.register(partition_model_provider(exp_csv, pred_csv, REPO_ROOT))
 
-    compiler = ResearchCompiler(workspace_dir=RIGOR_DIR)
-    try:
-        result = compiler.compile("", spec=spec, experiment=experiment)
-    except ValidityHalt as e:
-        print(f"error: evidence-validity halt: {e.reason}", file=sys.stderr)
-        return 2
-
-    print(f"compiled Spec '{result.spec.id}' -> {result.run_dir}")
-    print(f"  evidence: {len(result.evidence)} | claims: {len(result.claims)}\n")
-    for claim in sorted(result.claims, key=lambda c: c.answers):
-        print(f"    - {claim.answers:26s} {claim.status.value.upper()}")
-    print(f"\n  paper draft: {result.paper_path}")
-    print("\nRe-verify headlessly:")
-    print(f"    sci-adk verify {result.run_dir}")
-    return 0
+    print(f"registered capabilities: {registry.available()}")
+    return sci_adk_cli.main([
+        "run",
+        "--capability", PARTITION_MODEL_CAPABILITY_ID,
+        "-o", str(RIGOR_DIR),
+        "--spec-id", PARTITION_MODEL_CAPABILITY_ID,
+    ])
 
 
 if __name__ == "__main__":

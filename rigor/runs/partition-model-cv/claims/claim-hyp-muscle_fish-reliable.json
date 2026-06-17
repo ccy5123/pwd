@@ -12,7 +12,7 @@
   },
   "evidence_set": [
     {
-      "evidence_id": "evi-pmodel-muscle_fish-reliable-20260617-053622-ec416412",
+      "evidence_id": "evi-pmodel-muscle_fish-reliable-20260617-055050-c3953695",
       "role": "supporting"
     }
   ],
@@ -21,10 +21,10 @@
   "renders_to": null,
   "history": [
     {
-      "at": "2026-06-17T05:36:22.352953Z",
+      "at": "2026-06-17T05:50:50.097907Z",
       "from_status": "proposed",
       "to_status": "supported",
-      "triggered_by": "evi-pmodel-muscle_fish-reliable-20260617-053622-ec416412",
+      "triggered_by": "evi-pmodel-muscle_fish-reliable-20260617-055050-c3953695",
       "note": "Initial evaluation via DecisionEngine"
     }
   ]

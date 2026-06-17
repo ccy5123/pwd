@@ -302,6 +302,33 @@ def partition_model_experiment(
             y = y_all[mask].to_numpy(float); X = Xall[mask].to_numpy(float)
             surrogate = pd.to_numeric(merged[ph.surrogate_col], errors="coerce")[mask].to_numpy(float)
 
+            # Anti-method-shopping (F3): record the FULL single-surrogate field -- every
+            # one of the 72 surrogates' direct R^2 -- as one measured OBSERVATION, so the
+            # toolkit's "best surrogate per phase" cannot be cherry-picked: the whole field
+            # (winners AND losers) is on the append-only record, not just the winner.
+            field = []
+            for col in logk_cols:
+                s = pd.to_numeric(merged[col], errors="coerce")[mask].to_numpy(float)
+                if np.isfinite(s).all() and np.std(s) > 0:
+                    field.append((col, round(_coef_det(s, y), 6)))
+            field.sort(key=lambda t: t[1], reverse=True)
+            scan_ev = EvidenceItem(
+                id=_evidence_id(f"{ph.key}-surrogate-scan"),
+                created_at=datetime.now(timezone.utc), spec_id=spec.id,
+                kind=EvidenceKind.OBSERVATION,
+                provenance=_prov(commit, env, ph, exp_csv, pred_csv),
+                result=Result(type="qualitative", finding=json.dumps({
+                    "phase": ph.key, "what": "full single-surrogate direct-R2 field (all 72)",
+                    "purpose": "anti method-shopping: record every attempt, not just the best",
+                    "n": int(len(y)), "n_surrogates": len(field),
+                    "best": field[0] if field else None,
+                    "worst": field[-1] if field else None,
+                    "all_surrogates_r2": field,
+                }, ensure_ascii=False)),
+                bears_on=[],
+            )
+            _save_evidence(scan_ev, spec, workspace_dir); items.append(scan_ev)
+
             r2s, rmses = _cv_scores(X, y)
             mean_r2 = float(np.mean(r2s)); std_r2 = float(np.std(r2s))
             p2_5, p97_5 = (float(v) for v in np.percentile(r2s, [2.5, 97.5]))
@@ -410,8 +437,33 @@ def _save_evidence(evidence: EvidenceItem, spec: Spec, workspace_dir: Path) -> N
     )
 
 
+def partition_model_provider(exp_csv: Path, pred_csv: Path, repo_root: Path):
+    """Build the adapter ``CapabilityProvider`` for the real `sci-adk run --capability` path.
+
+    Mirrors sci-adk's own ``_t1_provider`` (adapter/registry.py): the kernel is driven
+    through its designed seam -- the CLI (composition root) registers this provider, then
+    ``sci-adk run --capability partition-model-cv`` resolves it from the registry and runs
+    its built-in demo (Spec + options). The kernel never imports this module; the seam
+    direction stays adapter -> kernel.
+    """
+    from sci_adk.adapter.registry import CapabilityProvider
+
+    def experiment_fn(**options):
+        return partition_model_experiment(
+            options["exp_csv"], options["pred_csv"], options.get("repo_root")
+        )
+
+    return CapabilityProvider(
+        id=PARTITION_MODEL_CAPABILITY_ID,
+        experiment_fn=experiment_fn,
+        demo_spec=build_partition_model_spec,
+        demo_options=lambda: {"exp_csv": exp_csv, "pred_csv": pred_csv, "repo_root": repo_root},
+    )
+
+
 __all__ = [
     "PARTITION_MODEL_CAPABILITY_ID",
     "build_partition_model_spec",
     "partition_model_experiment",
+    "partition_model_provider",
 ]

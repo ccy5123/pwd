@@ -12,7 +12,7 @@
   },
   "evidence_set": [
     {
-      "evidence_id": "evi-pmodel-albumin-useful-20260617-053621-a73576b9",
+      "evidence_id": "evi-pmodel-albumin-useful-20260617-055048-983c7105",
       "role": "supporting"
     }
   ],
@@ -21,10 +21,10 @@
   "renders_to": null,
   "history": [
     {
-      "at": "2026-06-17T05:36:22.350733Z",
+      "at": "2026-06-17T05:50:50.096179Z",
       "from_status": "proposed",
       "to_status": "supported",
-      "triggered_by": "evi-pmodel-albumin-useful-20260617-053621-a73576b9",
+      "triggered_by": "evi-pmodel-albumin-useful-20260617-055048-983c7105",
       "note": "Initial evaluation via DecisionEngine"
     }
   ]
