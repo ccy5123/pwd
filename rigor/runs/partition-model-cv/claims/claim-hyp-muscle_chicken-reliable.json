@@ -1,0 +1,31 @@
+{
+  "id": "claim-hyp-muscle_chicken-reliable",
+  "spec_id": "partition-model-cv",
+  "answers": "hyp-muscle_chicken-reliable",
+  "statement": "That muscle protein-water (chicken) model is reliably better than no-skill: the 95% across-seed CV-R^2 interval lies entirely above 0.00",
+  "status": "proposed",
+  "confidence": {
+    "type": "credence",
+    "value": 0.0,
+    "level": null,
+    "basis": "interval rule: CI=[-0.0445381, 0.77377] contains null_value=0 (support_side='above', combine='latest')"
+  },
+  "evidence_set": [
+    {
+      "evidence_id": "evi-pmodel-muscle_chicken-reliable-20260617-061636-65f33506",
+      "role": "refuting"
+    }
+  ],
+  "scope_limitations": "",
+  "mode": "exploratory",
+  "renders_to": null,
+  "history": [
+    {
+      "at": "2026-06-17T06:16:36.633885Z",
+      "from_status": "proposed",
+      "to_status": "proposed",
+      "triggered_by": "evi-pmodel-muscle_chicken-reliable-20260617-061636-65f33506",
+      "note": "Initial evaluation via DecisionEngine"
+    }
+  ]
+}

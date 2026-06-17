@@ -1,0 +1,28 @@
+{
+  "id": "evi-cosmors-priorwork-20260617-071447-8858afa8",
+  "created_at": "2026-06-17T07:14:47.011817Z",
+  "spec_id": "cosmors-physics-muscle",
+  "kind": "literature",
+  "provenance": {
+    "code_ref": "9aaec74f125246270a7ca2c9b9422c2e15a5e0b4:rigor/physics_cosmors_capability.py",
+    "data_ref": "prior art (Endo 2011/2012; openCOSMO-RS)",
+    "data_source": null,
+    "seed": null,
+    "environment": "capability:cosmors-physics-muscle; physics=openCOSMO-RS (no partition-data fit)",
+    "cost": null
+  },
+  "result": {
+    "type": "qualitative",
+    "point": null,
+    "effect_size": null,
+    "ci": null,
+    "p_value": null,
+    "posterior": null,
+    "residual": null,
+    "predictive_error": null,
+    "finding": "{\"searched_via\": \"agent web_search + repo data/README\", \"key_prior_art\": [\"Endo, Bauerfeind, Goss 2012, Environ. Sci. Technol. 46, 12697-12703, doi:10.1021/es303379y -- muscle protein-water partitioning (the measured set).\", \"Endo, Escher, Goss 2011, Environ. Sci. Technol. 45, 5912-5921, doi:10.1021/es200855w -- shows a homogeneous PC pseudo-solvent (COSMO-RS 'Approach 2') is RMSE ~1.0 because a bilayer/protein is not a homogeneous solvent; depth/structure-resolved treatment (COSMOmic) is needed.\", \"openCOSMO-RS (open-source COSMO-RS, openCOSMORS24a parameterization) -- the thermodynamic engine used; parameters are universal, NOT fit to partition data.\"], \"what_is_first_principles_here\": \"log K is computed from quantum sigma-profiles + COSMO-RS activity coefficients with the protein as an amino-acid pseudo-solvent; NO parameter is fit to the measured partition coefficients. This is a-priori physical prediction, not a descriptor regression.\"}",
+    "artifact_ref": null
+  },
+  "bears_on": [],
+  "supersedes": null
+}

@@ -1,0 +1,31 @@
+{
+  "id": "claim-hyp-albumin-reliable",
+  "spec_id": "partition-model-cv",
+  "answers": "hyp-albumin-reliable",
+  "statement": "That albumin-water model is reliably better than no-skill: the 95% across-seed CV-R^2 interval lies entirely above 0.00",
+  "status": "supported",
+  "confidence": {
+    "type": "credence",
+    "value": 0.9974594003275854,
+    "level": null,
+    "basis": "interval rule: CI=[0.584901, 0.682786] above null_value=0 (support_side='above', combine='latest')"
+  },
+  "evidence_set": [
+    {
+      "evidence_id": "evi-pmodel-albumin-reliable-20260617-061636-3c700375",
+      "role": "supporting"
+    }
+  ],
+  "scope_limitations": "",
+  "mode": "exploratory",
+  "renders_to": null,
+  "history": [
+    {
+      "at": "2026-06-17T06:16:36.633332Z",
+      "from_status": "proposed",
+      "to_status": "supported",
+      "triggered_by": "evi-pmodel-albumin-reliable-20260617-061636-3c700375",
+      "note": "Initial evaluation via DecisionEngine"
+    }
+  ]
+}

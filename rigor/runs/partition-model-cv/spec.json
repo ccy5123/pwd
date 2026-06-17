@@ -1,0 +1,257 @@
+{
+  "id": "partition-model-cv",
+  "created_at": "2026-06-17T06:16:17.737224Z",
+  "version": 1,
+  "raw_proposal": {
+    "background": "The partition-toolkit's single-surrogate xTB screening predicts lipid phases well but reports protein phases (albumin, muscle) as unpredictable (R^2 ~ 0), using ONE uncalibrated solvent surrogate scored by resubstitution. PRIOR WORK (recorded as Evidence): multi-descriptor PP-LFER models of these exact phases are established -- Endo/Brown/Goss 2013 (this dataset's source) reaches RMSE 0.32-0.53 log units. So 'predictable by a multi-descriptor model' is NOT novel; the open question is whether a fully in-silico xTB-only surrogate model (no measured Abraham descriptors) can recover the protein phases.",
+    "goal": "Test, with honest repeated cross-validation, whether a regularized model over the 72 xTB logK surrogates makes each phase (a) useful (mean CV R^2 >= 0.50) and (b) reliable (95% across-seed interval above the no-skill null).",
+    "method": "Features = all 72 logK_* columns (median-imputed, standardized in-pipeline). Model = RidgeCV(alphas=logspace(-2.0, 4.0, 25)), alpha chosen per training fold. Evaluate by 20x repeated 5-fold CV; statistic = out-of-fold coefficient of determination R^2 per seed. Bars are PRINCIPLED and pre-committed (0.50 = majority variance; null=0 = no-skill), NOT tuned to the observed numbers.",
+    "expected_output": "Per phase, a useful-verdict (SUPPORTED/REFUTED) and a reliable-verdict (SUPPORTED/NEUTRAL/REFUTED). LIMITATION: the dataset has been examined, so these hypotheses are EXPLORATORY, not confirmatory -- genuine confirmation needs an untouched external validation set. Performance is also below the PP-LFER benchmark (RMSE 0.32-0.53)."
+  },
+  "hypotheses": [
+    {
+      "id": "hyp-membrane-useful",
+      "statement": "A cross-validated multi-surrogate ridge model predicts phospholipid membrane-water logK with mean out-of-fold R^2 >= 0.50",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "mean out-of-fold R^2 over 20x repeated 5-fold CV of the multi-surrogate ridge model >= 0.50 (majority of out-of-sample variance) => support; < 0.50 => refute",
+        "params": {
+          "statistic": "cv_r2_mean",
+          "op": ">=",
+          "value": 0.5,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-membrane-reliable",
+      "statement": "That phospholipid membrane-water model is reliably better than no-skill: the 95% across-seed CV-R^2 interval lies entirely above 0.00",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "interval",
+        "expression": "the 95% across-seed interval [p2.5, p97.5] of the CV R^2 lies entirely above the no-skill null 0.00 => support (reliably better than no-skill); interval contains the null => neutral (reliability inconclusive); entirely below => refute",
+        "params": {
+          "null_value": 0.0,
+          "support_side": "above",
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-storage-useful",
+      "statement": "A cross-validated multi-surrogate ridge model predicts storage lipid-water logK with mean out-of-fold R^2 >= 0.50",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "mean out-of-fold R^2 over 20x repeated 5-fold CV of the multi-surrogate ridge model >= 0.50 (majority of out-of-sample variance) => support; < 0.50 => refute",
+        "params": {
+          "statistic": "cv_r2_mean",
+          "op": ">=",
+          "value": 0.5,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-storage-reliable",
+      "statement": "That storage lipid-water model is reliably better than no-skill: the 95% across-seed CV-R^2 interval lies entirely above 0.00",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "interval",
+        "expression": "the 95% across-seed interval [p2.5, p97.5] of the CV R^2 lies entirely above the no-skill null 0.00 => support (reliably better than no-skill); interval contains the null => neutral (reliability inconclusive); entirely below => refute",
+        "params": {
+          "null_value": 0.0,
+          "support_side": "above",
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-albumin-useful",
+      "statement": "A cross-validated multi-surrogate ridge model predicts albumin-water logK with mean out-of-fold R^2 >= 0.50",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "mean out-of-fold R^2 over 20x repeated 5-fold CV of the multi-surrogate ridge model >= 0.50 (majority of out-of-sample variance) => support; < 0.50 => refute",
+        "params": {
+          "statistic": "cv_r2_mean",
+          "op": ">=",
+          "value": 0.5,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-albumin-reliable",
+      "statement": "That albumin-water model is reliably better than no-skill: the 95% across-seed CV-R^2 interval lies entirely above 0.00",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "interval",
+        "expression": "the 95% across-seed interval [p2.5, p97.5] of the CV R^2 lies entirely above the no-skill null 0.00 => support (reliably better than no-skill); interval contains the null => neutral (reliability inconclusive); entirely below => refute",
+        "params": {
+          "null_value": 0.0,
+          "support_side": "above",
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-muscle_chicken-useful",
+      "statement": "A cross-validated multi-surrogate ridge model predicts muscle protein-water (chicken) logK with mean out-of-fold R^2 >= 0.50",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "mean out-of-fold R^2 over 20x repeated 5-fold CV of the multi-surrogate ridge model >= 0.50 (majority of out-of-sample variance) => support; < 0.50 => refute",
+        "params": {
+          "statistic": "cv_r2_mean",
+          "op": ">=",
+          "value": 0.5,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-muscle_chicken-reliable",
+      "statement": "That muscle protein-water (chicken) model is reliably better than no-skill: the 95% across-seed CV-R^2 interval lies entirely above 0.00",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "interval",
+        "expression": "the 95% across-seed interval [p2.5, p97.5] of the CV R^2 lies entirely above the no-skill null 0.00 => support (reliably better than no-skill); interval contains the null => neutral (reliability inconclusive); entirely below => refute",
+        "params": {
+          "null_value": 0.0,
+          "support_side": "above",
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-muscle_fish-useful",
+      "statement": "A cross-validated multi-surrogate ridge model predicts muscle protein-water (fish) logK with mean out-of-fold R^2 >= 0.50",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "mean out-of-fold R^2 over 20x repeated 5-fold CV of the multi-surrogate ridge model >= 0.50 (majority of out-of-sample variance) => support; < 0.50 => refute",
+        "params": {
+          "statistic": "cv_r2_mean",
+          "op": ">=",
+          "value": 0.5,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-muscle_fish-reliable",
+      "statement": "That muscle protein-water (fish) model is reliably better than no-skill: the 95% across-seed CV-R^2 interval lies entirely above 0.00",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "interval",
+        "expression": "the 95% across-seed interval [p2.5, p97.5] of the CV R^2 lies entirely above the no-skill null 0.00 => support (reliably better than no-skill); interval contains the null => neutral (reliability inconclusive); entirely below => refute",
+        "params": {
+          "null_value": 0.0,
+          "support_side": "above",
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    }
+  ],
+  "method": {
+    "approaches": [
+      "multi-surrogate ridge regression over the 72 xTB logK_solvent/water columns",
+      "per-fold alpha selection + in-pipeline imputation/standardization (no leakage)",
+      "repeated k-fold CV; out-of-fold coefficient of determination",
+      "across-seed 95% interval vs a no-skill null as a principled reliability test"
+    ],
+    "tools": [
+      {
+        "name": "scikit-learn RidgeCV + KFold",
+        "version": null,
+        "kind": "library"
+      },
+      {
+        "name": "xTB logK surrogate matrix (72 cols, 440 compounds)",
+        "version": null,
+        "kind": "dataset"
+      },
+      {
+        "name": "UFZ-LSER PPLFER measured logK (5 phases)",
+        "version": null,
+        "kind": "dataset"
+      }
+    ]
+  },
+  "target_claims": [
+    {
+      "id": "tc-membrane-useful",
+      "statement": "in-silico xTB surrogate modelling makes phospholipid membrane-water partitioning predictable",
+      "answers": "hyp-membrane-useful"
+    },
+    {
+      "id": "tc-membrane-reliable",
+      "statement": "the phospholipid membrane-water model's skill is reliable across resampling",
+      "answers": "hyp-membrane-reliable"
+    },
+    {
+      "id": "tc-storage-useful",
+      "statement": "in-silico xTB surrogate modelling makes storage lipid-water partitioning predictable",
+      "answers": "hyp-storage-useful"
+    },
+    {
+      "id": "tc-storage-reliable",
+      "statement": "the storage lipid-water model's skill is reliable across resampling",
+      "answers": "hyp-storage-reliable"
+    },
+    {
+      "id": "tc-albumin-useful",
+      "statement": "in-silico xTB surrogate modelling makes albumin-water partitioning predictable",
+      "answers": "hyp-albumin-useful"
+    },
+    {
+      "id": "tc-albumin-reliable",
+      "statement": "the albumin-water model's skill is reliable across resampling",
+      "answers": "hyp-albumin-reliable"
+    },
+    {
+      "id": "tc-muscle_chicken-useful",
+      "statement": "in-silico xTB surrogate modelling makes muscle protein-water (chicken) partitioning predictable",
+      "answers": "hyp-muscle_chicken-useful"
+    },
+    {
+      "id": "tc-muscle_chicken-reliable",
+      "statement": "the muscle protein-water (chicken) model's skill is reliable across resampling",
+      "answers": "hyp-muscle_chicken-reliable"
+    },
+    {
+      "id": "tc-muscle_fish-useful",
+      "statement": "in-silico xTB surrogate modelling makes muscle protein-water (fish) partitioning predictable",
+      "answers": "hyp-muscle_fish-useful"
+    },
+    {
+      "id": "tc-muscle_fish-reliable",
+      "statement": "the muscle protein-water (fish) model's skill is reliable across resampling",
+      "answers": "hyp-muscle_fish-reliable"
+    }
+  ],
+  "amendment_rationale": null,
+  "prior_version_id": null
+}

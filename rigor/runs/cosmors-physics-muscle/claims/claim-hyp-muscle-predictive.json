@@ -1,0 +1,31 @@
+{
+  "id": "claim-hyp-muscle-predictive",
+  "spec_id": "cosmors-physics-muscle",
+  "answers": "hyp-muscle-predictive",
+  "statement": "Parameter-free first-principles COSMO-RS predicts muscle protein-water logK as a direct quantitative predictor: coefficient of determination R^2 = 1 - SS_res/SS_tot >= 0 (beats the no-skill mean baseline)",
+  "status": "refuted",
+  "confidence": {
+    "type": "credence",
+    "value": 0.0600238036707037,
+    "level": null,
+    "basis": "threshold rule: statistic 'point'=-0.0619007 >= 0 is not met (combine='latest', margin=0.0619007)"
+  },
+  "evidence_set": [
+    {
+      "evidence_id": "evi-cosmors-hyp-muscle-predictive-20260617-071447-9c56294a",
+      "role": "refuting"
+    }
+  ],
+  "scope_limitations": "",
+  "mode": "exploratory",
+  "renders_to": null,
+  "history": [
+    {
+      "at": "2026-06-17T07:14:47.016093Z",
+      "from_status": "proposed",
+      "to_status": "refuted",
+      "triggered_by": "evi-cosmors-hyp-muscle-predictive-20260617-071447-9c56294a",
+      "note": "Initial evaluation via DecisionEngine"
+    }
+  ]
+}

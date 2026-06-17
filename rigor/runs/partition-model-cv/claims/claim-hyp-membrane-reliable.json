@@ -1,0 +1,31 @@
+{
+  "id": "claim-hyp-membrane-reliable",
+  "spec_id": "partition-model-cv",
+  "answers": "hyp-membrane-reliable",
+  "statement": "That phospholipid membrane-water model is reliably better than no-skill: the 95% across-seed CV-R^2 interval lies entirely above 0.00",
+  "status": "supported",
+  "confidence": {
+    "type": "credence",
+    "value": 0.9999999951410818,
+    "level": null,
+    "basis": "interval rule: CI=[0.875066, 0.92078] above null_value=0 (support_side='above', combine='latest')"
+  },
+  "evidence_set": [
+    {
+      "evidence_id": "evi-pmodel-membrane-reliable-20260617-061636-20cada82",
+      "role": "supporting"
+    }
+  ],
+  "scope_limitations": "",
+  "mode": "exploratory",
+  "renders_to": null,
+  "history": [
+    {
+      "at": "2026-06-17T06:16:36.632099Z",
+      "from_status": "proposed",
+      "to_status": "supported",
+      "triggered_by": "evi-pmodel-membrane-reliable-20260617-061636-20cada82",
+      "note": "Initial evaluation via DecisionEngine"
+    }
+  ]
+}

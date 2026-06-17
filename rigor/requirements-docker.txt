@@ -1,0 +1,5 @@
+# Pinned to the host versions used to generate the committed run, so a containerized
+# re-run reproduces the CV numbers bit-for-bit (verify re-derives verdicts either way).
+numpy==2.4.6
+pandas==3.0.3
+scikit-learn==1.9.0

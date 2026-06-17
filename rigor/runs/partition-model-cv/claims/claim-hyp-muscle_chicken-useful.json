@@ -1,0 +1,31 @@
+{
+  "id": "claim-hyp-muscle_chicken-useful",
+  "spec_id": "partition-model-cv",
+  "answers": "hyp-muscle_chicken-useful",
+  "statement": "A cross-validated multi-surrogate ridge model predicts muscle protein-water (chicken) logK with mean out-of-fold R^2 >= 0.50",
+  "status": "supported",
+  "confidence": {
+    "type": "credence",
+    "value": 0.13572765869282444,
+    "level": null,
+    "basis": "threshold rule: statistic 'point'=0.645867 >= 0.5 is met (combine='latest', margin=0.145867)"
+  },
+  "evidence_set": [
+    {
+      "evidence_id": "evi-pmodel-muscle_chicken-useful-20260617-061636-0be82e80",
+      "role": "supporting"
+    }
+  ],
+  "scope_limitations": "",
+  "mode": "exploratory",
+  "renders_to": null,
+  "history": [
+    {
+      "at": "2026-06-17T06:16:36.633611Z",
+      "from_status": "proposed",
+      "to_status": "supported",
+      "triggered_by": "evi-pmodel-muscle_chicken-useful-20260617-061636-0be82e80",
+      "note": "Initial evaluation via DecisionEngine"
+    }
+  ]
+}

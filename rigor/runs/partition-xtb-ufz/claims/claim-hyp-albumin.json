@@ -1,0 +1,31 @@
+{
+  "id": "claim-hyp-albumin",
+  "spec_id": "partition-xtb-ufz",
+  "answers": "hyp-albumin",
+  "statement": "The pre-registered single-conformer xTB surrogate 'logK_GFN1_alpb_woctanol' predicts albumin-water logK with coefficient of determination R^2 >= 0.70 over the UFZ test set",
+  "status": "refuted",
+  "confidence": {
+    "type": "credence",
+    "value": 0.3247172415568117,
+    "level": null,
+    "basis": "threshold rule: statistic 'point'=0.307376 >= 0.7 is not met (combine='latest', margin=0.392624)"
+  },
+  "evidence_set": [
+    {
+      "evidence_id": "evi-partition-albumin-20260617-044218-f9996827",
+      "role": "refuting"
+    }
+  ],
+  "scope_limitations": "",
+  "mode": "confirmatory",
+  "renders_to": null,
+  "history": [
+    {
+      "at": "2026-06-17T04:42:18.172030Z",
+      "from_status": "proposed",
+      "to_status": "refuted",
+      "triggered_by": "evi-partition-albumin-20260617-044218-f9996827",
+      "note": "Initial evaluation via DecisionEngine"
+    }
+  ]
+}

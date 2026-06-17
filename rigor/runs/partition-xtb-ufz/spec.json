@@ -1,0 +1,151 @@
+{
+  "id": "partition-xtb-ufz",
+  "created_at": "2026-06-17T04:42:17.839334Z",
+  "version": 1,
+  "raw_proposal": {
+    "background": "Tissue/blood partition coefficients drive bioaccumulation and PBPK models. The partition-toolkit screens cheap GFN1/GFN2-xTB single-point energies in 25 ALPB + 12-14 GBSA implicit solvents (78 SP/molecule) and uses each solvent's logK_solvent/water as a surrogate for a biological phase, validated against 440 UFZ-LSER compounds across five phases.",
+    "goal": "Establish, per phase, whether the pre-registered xTB surrogate is a useful direct predictor of the measured partition coefficient (coefficient of determination R^2 >= 0.70).",
+    "method": "For each phase, pair the FROZEN pre-selected surrogate logK column with the measured UFZ logK, drop missing rows, and compute R^2 = 1 - SS_res/SS_tot using the surrogate directly as the prediction (the toolkit's reported metric). Judge each R^2 against the frozen 0.70 threshold autonomously. NOTE (limitation): the surrogate was selected on this same set, so these are resubstitution R^2 (optimistic upper bounds), not cross-validated.",
+    "expected_output": "A per-phase SUPPORTED/REFUTED verdict. Expected from prior screening: lipid phases (membrane, storage) SUPPORTED; protein phases (albumin, muscle chicken/fish) REFUTED -- i.e. xTB surrogacy works for lipids but not proteins."
+  },
+  "hypotheses": [
+    {
+      "id": "hyp-membrane",
+      "statement": "The pre-registered single-conformer xTB surrogate 'logK_GFN2_gbsa_acetonitrile' predicts phospholipid membrane-water logK with coefficient of determination R^2 >= 0.70 over the UFZ test set",
+      "mode": "confirmatory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "coefficient of determination R^2 (surrogate logK as a direct, uncalibrated predictor of the measured phase logK) >= 0.70 over the UFZ test set => support (useful predictor for this phase); R^2 < 0.70 => refute",
+        "params": {
+          "statistic": "coef_det_R2",
+          "op": ">=",
+          "value": 0.7,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-storage",
+      "statement": "The pre-registered single-conformer xTB surrogate 'logK_GFN1_alpb_hexane' predicts storage lipid-water logK with coefficient of determination R^2 >= 0.70 over the UFZ test set",
+      "mode": "confirmatory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "coefficient of determination R^2 (surrogate logK as a direct, uncalibrated predictor of the measured phase logK) >= 0.70 over the UFZ test set => support (useful predictor for this phase); R^2 < 0.70 => refute",
+        "params": {
+          "statistic": "coef_det_R2",
+          "op": ">=",
+          "value": 0.7,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-albumin",
+      "statement": "The pre-registered single-conformer xTB surrogate 'logK_GFN1_alpb_woctanol' predicts albumin-water logK with coefficient of determination R^2 >= 0.70 over the UFZ test set",
+      "mode": "confirmatory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "coefficient of determination R^2 (surrogate logK as a direct, uncalibrated predictor of the measured phase logK) >= 0.70 over the UFZ test set => support (useful predictor for this phase); R^2 < 0.70 => refute",
+        "params": {
+          "statistic": "coef_det_R2",
+          "op": ">=",
+          "value": 0.7,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-muscle_chicken",
+      "statement": "The pre-registered single-conformer xTB surrogate 'logK_GFN1_alpb_octanol' predicts muscle protein-water (chicken) logK with coefficient of determination R^2 >= 0.70 over the UFZ test set",
+      "mode": "confirmatory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "coefficient of determination R^2 (surrogate logK as a direct, uncalibrated predictor of the measured phase logK) >= 0.70 over the UFZ test set => support (useful predictor for this phase); R^2 < 0.70 => refute",
+        "params": {
+          "statistic": "coef_det_R2",
+          "op": ">=",
+          "value": 0.7,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-muscle_fish",
+      "statement": "The pre-registered single-conformer xTB surrogate 'logK_GFN1_alpb_octanol' predicts muscle protein-water (fish) logK with coefficient of determination R^2 >= 0.70 over the UFZ test set",
+      "mode": "confirmatory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "coefficient of determination R^2 (surrogate logK as a direct, uncalibrated predictor of the measured phase logK) >= 0.70 over the UFZ test set => support (useful predictor for this phase); R^2 < 0.70 => refute",
+        "params": {
+          "statistic": "coef_det_R2",
+          "op": ">=",
+          "value": 0.7,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    }
+  ],
+  "method": {
+    "approaches": [
+      "GFN1/GFN2-xTB single-point energies with ALPB and GBSA implicit solvation",
+      "solvent-as-phase surrogacy: logK_solvent/water from the body-temperature transfer free energy",
+      "coefficient-of-determination validation against measured UFZ-LSER logK"
+    ],
+    "tools": [
+      {
+        "name": "tblite (GFN1-xTB/GFN2-xTB)",
+        "version": null,
+        "kind": "solver"
+      },
+      {
+        "name": "RDKit ETKDGv3+MMFF94 (3D conformer)",
+        "version": null,
+        "kind": "library"
+      },
+      {
+        "name": "UFZ-LSER PPLFER partition dataset (440 compounds)",
+        "version": null,
+        "kind": "dataset"
+      }
+    ]
+  },
+  "target_claims": [
+    {
+      "id": "tc-membrane",
+      "statement": "xTB implicit-solvent surrogacy is useful for phospholipid membrane-water partitioning",
+      "answers": "hyp-membrane"
+    },
+    {
+      "id": "tc-storage",
+      "statement": "xTB implicit-solvent surrogacy is useful for storage lipid-water partitioning",
+      "answers": "hyp-storage"
+    },
+    {
+      "id": "tc-albumin",
+      "statement": "xTB implicit-solvent surrogacy is evaluated for albumin-water partitioning",
+      "answers": "hyp-albumin"
+    },
+    {
+      "id": "tc-muscle_chicken",
+      "statement": "xTB implicit-solvent surrogacy is evaluated for muscle protein-water (chicken) partitioning",
+      "answers": "hyp-muscle_chicken"
+    },
+    {
+      "id": "tc-muscle_fish",
+      "statement": "xTB implicit-solvent surrogacy is evaluated for muscle protein-water (fish) partitioning",
+      "answers": "hyp-muscle_fish"
+    }
+  ],
+  "amendment_rationale": null,
+  "prior_version_id": null
+}

@@ -1,0 +1,28 @@
+{
+  "id": "evi-pmodel-muscle_fish-surrogate-scan-20260617-061636-c8df0dbc",
+  "created_at": "2026-06-17T06:16:36.629663Z",
+  "spec_id": "partition-model-cv",
+  "kind": "observation",
+  "provenance": {
+    "code_ref": "8a4dc120cadf4b0d1001e72f05ff40c672f5a9b2:rigor/partition_model_capability.py",
+    "data_ref": "UFZ-LSER PPLFER (measured=muscle_fish_exp); features=all logK_* (compounds_input_table1.csv x xtb_gfn12_predictions.csv)",
+    "data_source": "measured",
+    "seed": null,
+    "environment": "capability:partition-model-cv, sklearn:1.9.0, numpy:2.4.6, pandas:3.0.3; executor=in-process, fallback=docker daemon not running",
+    "cost": null
+  },
+  "result": {
+    "type": "qualitative",
+    "point": null,
+    "effect_size": null,
+    "ci": null,
+    "p_value": null,
+    "posterior": null,
+    "residual": null,
+    "predictive_error": null,
+    "finding": "{\"phase\": \"muscle_fish\", \"what\": \"full single-surrogate direct-R2 field (all 72)\", \"purpose\": \"anti method-shopping: record every attempt, not just the best\", \"n\": 45, \"n_surrogates\": 72, \"best\": [\"logK_GFN1_alpb_octanol\", -0.007872], \"worst\": [\"logK_GFN2_alpb_dmf\", -9.437287], \"all_surrogates_r2\": [[\"logK_GFN1_alpb_octanol\", -0.007872], [\"logK_GFN1_alpb_woctanol\", -0.220488], [\"logK_GFN1_gbsa_acetonitrile\", -0.460408], [\"logK_GFN1_gbsa_dmso\", -0.504957], [\"logK_GFN2_gbsa_acetonitrile\", -0.585329], [\"logK_GFN2_gbsa_methanol\", -0.608471], [\"logK_GFN2_alpb_octanol\", -0.651179], [\"logK_GFN2_gbsa_hexane\", -0.69888], [\"logK_GFN1_gbsa_methanol\", -0.796087], [\"logK_GFN2_alpb_woctanol\", -0.933369], [\"logK_GFN2_alpb_hexadecane\", -0.949677], [\"logK_GFN1_alpb_hexadecane\", -1.093023], [\"logK_GFN1_alpb_hexane\", -1.189534], [\"logK_GFN1_alpb_methanol\", -1.234715], [\"logK_GFN1_alpb_nitromethane\", -1.753488], [\"logK_GFN2_gbsa_benzene\", -1.954621], [\"logK_GFN2_gbsa_toluene\", -1.954621], [\"logK_GFN2_gbsa_ether\", -2.023265], [\"logK_GFN1_alpb_acetonitrile\", -2.100394], [\"logK_GFN2_gbsa_cs2\", -2.140423], [\"logK_GFN2_alpb_hexane\", -2.262971], [\"logK_GFN1_alpb_aniline\", -2.27433], [\"logK_GFN2_gbsa_acetone\", -2.295797], [\"logK_GFN1_alpb_ether\", -2.301058], [\"logK_GFN2_gbsa_dmso\", -2.444949], [\"logK_GFN2_gbsa_thf\", -2.769436], [\"logK_GFN2_alpb_nitromethane\", -2.771857], [\"logK_GFN2_gbsa_dmf\", -2.788496], [\"logK_GFN1_alpb_toluene\", -2.968124], [\"logK_GFN1_gbsa_acetone\", -2.975182], [\"logK_GFN1_alpb_thf\", -3.333188], [\"logK_GFN2_gbsa_chcl3\", -3.406789], [\"logK_GFN1_alpb_cs2\", -3.458199], [\"logK_GFN1_alpb_furane\", -3.47416], [\"logK_GFN2_alpb_acetonitrile\", -3.665984], [\"logK_GFN1_alpb_acetone\", -3.675206], [\"logK_GFN1_alpb_benzaldehyde\", -3.705689], [\"logK_GFN1_alpb_dioxane\", -3.732371], [\"logK_GFN2_alpb_methanol\", -3.797577], [\"logK_GFN1_alpb_chcl3\", -3.864667], [\"logK_GFN2_alpb_ethanol\", -3.887556], [\"logK_GFN2_alpb_toluene\", -4.116973], [\"logK_GFN1_alpb_ethyl_acetate\", -4.265596], [\"logK_GFN1_alpb_ch2cl2\", -4.284809], [\"logK_GFN2_gbsa_ch2cl2\", -4.329485], [\"logK_GFN1_gbsa_benzene\", -4.341189], [\"logK_GFN1_gbsa_toluene\", -4.341189], [\"logK_GFN1_gbsa_cs2\", -4.42622], [\"logK_GFN1_alpb_benzene\", -4.508823], [\"logK_GFN2_alpb_aniline\", -4.5847], [\"logK_GFN1_gbsa_ether\", -4.602073], [\"logK_GFN2_alpb_benzaldehyde\", -4.746927], [\"logK_GFN1_alpb_phenol\", -4.778864], [\"logK_GFN1_alpb_dmso\", -4.82032], [\"logK_GFN2_alpb_cs2\", -4.835914], [\"logK_GFN2_alpb_furane\", -5.147075], [\"logK_GFN1_gbsa_ch2cl2\", -5.188844], [\"logK_GFN1_gbsa_chcl3\", -5.188844], [\"logK_GFN1_gbsa_thf\", -5.51488], [\"logK_GFN1_alpb_ethanol\", -5.77423], [\"logK_GFN2_alpb_ether\", -5.795589], [\"logK_GFN2_alpb_ethyl_acetate\", -5.839136], [\"logK_GFN2_alpb_benzene\", -5.940733], [\"logK_GFN1_alpb_dmf\", -6.169938], [\"logK_GFN2_alpb_chcl3\", -6.408115], [\"logK_GFN2_alpb_dioxane\", -6.984947], [\"logK_GFN2_alpb_ch2cl2\", -7.23351], [\"logK_GFN2_alpb_thf\", -7.267304], [\"logK_GFN2_alpb_phenol\", -8.260839], [\"logK_GFN2_alpb_dmso\", -8.384356], [\"logK_GFN2_alpb_acetone\", -9.246623], [\"logK_GFN2_alpb_dmf\", -9.437287]]}",
+    "artifact_ref": null
+  },
+  "bears_on": [],
+  "supersedes": null
+}

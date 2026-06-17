@@ -1,0 +1,28 @@
+{
+  "id": "evi-pmodel-membrane-surrogate-scan-20260617-061636-66deced0",
+  "created_at": "2026-06-17T06:16:36.622371Z",
+  "spec_id": "partition-model-cv",
+  "kind": "observation",
+  "provenance": {
+    "code_ref": "8a4dc120cadf4b0d1001e72f05ff40c672f5a9b2:rigor/partition_model_capability.py",
+    "data_ref": "UFZ-LSER PPLFER (measured=membrane_exp); features=all logK_* (compounds_input_table1.csv x xtb_gfn12_predictions.csv)",
+    "data_source": "measured",
+    "seed": null,
+    "environment": "capability:partition-model-cv, sklearn:1.9.0, numpy:2.4.6, pandas:3.0.3; executor=in-process, fallback=docker daemon not running",
+    "cost": null
+  },
+  "result": {
+    "type": "qualitative",
+    "point": null,
+    "effect_size": null,
+    "ci": null,
+    "p_value": null,
+    "posterior": null,
+    "residual": null,
+    "predictive_error": null,
+    "finding": "{\"phase\": \"membrane\", \"what\": \"full single-surrogate direct-R2 field (all 72)\", \"purpose\": \"anti method-shopping: record every attempt, not just the best\", \"n\": 207, \"n_surrogates\": 72, \"best\": [\"logK_GFN2_gbsa_acetonitrile\", 0.808065], \"worst\": [\"logK_GFN1_alpb_hexadecane\", -1.245985], \"all_surrogates_r2\": [[\"logK_GFN2_gbsa_acetonitrile\", 0.808065], [\"logK_GFN2_alpb_woctanol\", 0.780157], [\"logK_GFN1_alpb_methanol\", 0.741364], [\"logK_GFN2_alpb_octanol\", 0.681279], [\"logK_GFN1_alpb_ether\", 0.667576], [\"logK_GFN1_alpb_woctanol\", 0.665781], [\"logK_GFN1_alpb_acetonitrile\", 0.654417], [\"logK_GFN1_alpb_aniline\", 0.653535], [\"logK_GFN1_alpb_thf\", 0.649235], [\"logK_GFN1_gbsa_dmso\", 0.637259], [\"logK_GFN1_gbsa_acetonitrile\", 0.636665], [\"logK_GFN1_alpb_benzaldehyde\", 0.632924], [\"logK_GFN1_alpb_ethyl_acetate\", 0.62995], [\"logK_GFN2_alpb_ethanol\", 0.616614], [\"logK_GFN1_gbsa_methanol\", 0.610431], [\"logK_GFN1_alpb_dioxane\", 0.607941], [\"logK_GFN2_alpb_methanol\", 0.6034], [\"logK_GFN2_gbsa_thf\", 0.577179], [\"logK_GFN2_alpb_acetonitrile\", 0.561056], [\"logK_GFN2_gbsa_benzene\", 0.555391], [\"logK_GFN2_gbsa_toluene\", 0.555391], [\"logK_GFN1_alpb_furane\", 0.549146], [\"logK_GFN1_gbsa_ether\", 0.537647], [\"logK_GFN2_gbsa_methanol\", 0.520754], [\"logK_GFN2_alpb_aniline\", 0.512624], [\"logK_GFN1_gbsa_benzene\", 0.501476], [\"logK_GFN1_gbsa_toluene\", 0.501476], [\"logK_GFN2_gbsa_cs2\", 0.484451], [\"logK_GFN1_alpb_chcl3\", 0.463994], [\"logK_GFN2_gbsa_ether\", 0.461342], [\"logK_GFN1_gbsa_acetone\", 0.455256], [\"logK_GFN2_gbsa_dmf\", 0.455198], [\"logK_GFN1_alpb_acetone\", 0.454209], [\"logK_GFN1_alpb_ch2cl2\", 0.446131], [\"logK_GFN2_gbsa_acetone\", 0.44266], [\"logK_GFN2_alpb_benzaldehyde\", 0.437995], [\"logK_GFN2_gbsa_chcl3\", 0.437081], [\"logK_GFN2_alpb_ether\", 0.426904], [\"logK_GFN1_alpb_nitromethane\", 0.422872], [\"logK_GFN1_gbsa_ch2cl2\", 0.420262], [\"logK_GFN1_gbsa_chcl3\", 0.420262], [\"logK_GFN2_alpb_furane\", 0.418809], [\"logK_GFN2_alpb_ethyl_acetate\", 0.413114], [\"logK_GFN1_alpb_toluene\", 0.40413], [\"logK_GFN1_alpb_dmf\", 0.361957], [\"logK_GFN1_gbsa_thf\", 0.356205], [\"logK_GFN2_gbsa_ch2cl2\", 0.346752], [\"logK_GFN2_alpb_toluene\", 0.322915], [\"logK_GFN1_alpb_benzene\", 0.319171], [\"logK_GFN2_alpb_benzene\", 0.314086], [\"logK_GFN1_alpb_octanol\", 0.311167], [\"logK_GFN1_alpb_dmso\", 0.286607], [\"logK_GFN2_alpb_nitromethane\", 0.284585], [\"logK_GFN2_alpb_cs2\", 0.278345], [\"logK_GFN2_alpb_chcl3\", 0.258103], [\"logK_GFN2_gbsa_hexane\", 0.246031], [\"logK_GFN2_alpb_dioxane\", 0.243166], [\"logK_GFN2_gbsa_dmso\", 0.241611], [\"logK_GFN2_alpb_ch2cl2\", 0.229113], [\"logK_GFN1_alpb_phenol\", 0.173188], [\"logK_GFN2_alpb_hexane\", 0.168616], [\"logK_GFN2_alpb_thf\", 0.103098], [\"logK_GFN1_gbsa_cs2\", 0.053246], [\"logK_GFN2_alpb_acetone\", -0.008795], [\"logK_GFN1_alpb_cs2\", -0.089377], [\"logK_GFN2_alpb_dmf\", -0.183726], [\"logK_GFN2_alpb_dmso\", -0.226941], [\"logK_GFN1_alpb_hexane\", -0.314316], [\"logK_GFN2_alpb_phenol\", -0.629111], [\"logK_GFN2_alpb_hexadecane\", -0.714145], [\"logK_GFN1_alpb_ethanol\", -0.838827], [\"logK_GFN1_alpb_hexadecane\", -1.245985]]}",
+    "artifact_ref": null
+  },
+  "bears_on": [],
+  "supersedes": null
+}

@@ -1,0 +1,129 @@
+{
+  "id": "cosmors-physics-muscle",
+  "created_at": "2026-06-17T07:14:46.955164Z",
+  "version": 1,
+  "raw_proposal": {
+    "background": "Tissue partition coefficients are needed a priori for PBPK/bioaccumulation. PP-LFER needs measured Abraham descriptors + coefficients FITTED to partition data. A first-principles route computes log K purely from quantum sigma-profiles + COSMO-RS activity coefficients, with the protein as an explicit amino-acid pseudo-solvent and NO parameter fit to partition data. This run validates that a-priori physical prediction for muscle protein (the one phase with a committed COSMO-RS result; the others need ORCA sigma-profiles, unavailable here).",
+    "goal": "Quantify how well parameter-free COSMO-RS reproduces measured muscle logK, and diagnose WHERE the physics systematically fails (the missing physics).",
+    "method": "Protein = actin+myosin amino-acid composition pseudo-solvent (capped Ace-X-Nme residues); solute sigma-profiles from quantum calc; openCOSMORS24a; ln_gamma_inf in water and in the protein mix at 310.15 K; log K = (ln_gamma_w - ln_gamma_p)/ln10, NO fit to partition data. Validate vs the Endo measured set (n=46): RMSE, mean signed error (bias), R^2, slope, and per-class residuals (polar O/N vs nonpolar). Bars are field-standard and pre-committed: useful RMSE<=1.0, unbiased |bias|<=0.3, localized-gap>=0.5.",
+    "expected_output": "A SUPPORTED/REFUTED verdict per hypothesis, plus the systematic error pattern that reveals the missing physics. Honest prior expectation (Endo 2011): a homogeneous pseudo-solvent is ~RMSE 1.0 and over-counts polar interactions. EXPLORATORY (results pre-exist in the repo); a confirmatory test needs an untouched solute set."
+  },
+  "hypotheses": [
+    {
+      "id": "hyp-muscle-predictive",
+      "statement": "Parameter-free first-principles COSMO-RS predicts muscle protein-water logK as a direct quantitative predictor: coefficient of determination R^2 = 1 - SS_res/SS_tot >= 0 (beats the no-skill mean baseline)",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "coefficient of determination R^2 = 1 - SS_res/SS_tot (the UNCALIBRATED physical prediction vs the 1:1 line) >= 0.0 => support (beats the no-skill mean baseline as a direct predictor); < 0.0 => refute",
+        "params": {
+          "statistic": "coef_det",
+          "op": ">=",
+          "value": 0.0,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-muscle-useful",
+      "statement": "Parameter-free first-principles COSMO-RS (amino-acid pseudo-solvent) predicts muscle protein-water logK with RMSE <= 1.0 log units",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "parameter-free COSMO-RS RMSE vs measured logK <= 1.0 log units => support (useful screening); > 1.0 => refute",
+        "params": {
+          "statistic": "rmse",
+          "op": "<=",
+          "value": 1.0,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-muscle-unbiased",
+      "statement": "That physical prediction has no systematic offset: |mean signed error| <= 0.3 log units",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "|mean signed error (pred-exp)| <= 0.3 => support (no systematic offset); > 0.3 => refute (biased)",
+        "params": {
+          "statistic": "abs_bias",
+          "op": "<=",
+          "value": 0.3,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
+    {
+      "id": "hyp-muscle-missing-physics",
+      "statement": "The prediction error is a localized systematic over-prediction of polar/H-bond solutes (mean polar residual exceeds mean nonpolar residual by >= 0.5), diagnosing the homogeneous amino-acid pseudo-solvent as the missing physics (exposed polar residues over-counted vs a folded protein)",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "mean(polar residual) - mean(nonpolar residual) >= 0.5 => support (over-prediction localized to polar/H-bond solutes -- diagnoses the homogeneous-pseudo-solvent missing physics); < 0.5 => refute",
+        "params": {
+          "statistic": "polar_gap",
+          "op": ">=",
+          "value": 0.5,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    }
+  ],
+  "method": {
+    "approaches": [
+      "first-principles COSMO-RS: quantum sigma-profile -> activity coefficient -> log K",
+      "protein as amino-acid pseudo-solvent at tissue composition (no partition-data fit)",
+      "validation vs measured logK: RMSE / bias / R^2 / slope + per-class residual diagnosis"
+    ],
+    "tools": [
+      {
+        "name": "openCOSMO-RS (openCOSMORS24a)",
+        "version": null,
+        "kind": "solver"
+      },
+      {
+        "name": "amino-acid pseudo-solvent (actin+myosin composition)",
+        "version": null,
+        "kind": "model"
+      },
+      {
+        "name": "Endo muscle protein-water measured logK (n=46)",
+        "version": null,
+        "kind": "dataset"
+      }
+    ]
+  },
+  "target_claims": [
+    {
+      "id": "tc-hyp-muscle-predictive",
+      "statement": "Parameter-free first-principles COSMO-RS predicts muscle pro",
+      "answers": "hyp-muscle-predictive"
+    },
+    {
+      "id": "tc-hyp-muscle-useful",
+      "statement": "Parameter-free first-principles COSMO-RS (amino-acid pseudo-",
+      "answers": "hyp-muscle-useful"
+    },
+    {
+      "id": "tc-hyp-muscle-unbiased",
+      "statement": "That physical prediction has no systematic offset: |mean sig",
+      "answers": "hyp-muscle-unbiased"
+    },
+    {
+      "id": "tc-hyp-muscle-missing-physics",
+      "statement": "The prediction error is a localized systematic over-predicti",
+      "answers": "hyp-muscle-missing-physics"
+    }
+  ],
+  "amendment_rationale": null,
+  "prior_version_id": null
+}

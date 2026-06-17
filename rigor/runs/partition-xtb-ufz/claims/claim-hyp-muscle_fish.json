@@ -1,0 +1,31 @@
+{
+  "id": "claim-hyp-muscle_fish",
+  "spec_id": "partition-xtb-ufz",
+  "answers": "hyp-muscle_fish",
+  "statement": "The pre-registered single-conformer xTB surrogate 'logK_GFN1_alpb_octanol' predicts muscle protein-water (fish) logK with coefficient of determination R^2 >= 0.70 over the UFZ test set",
+  "status": "refuted",
+  "confidence": {
+    "type": "credence",
+    "value": 0.5073082666312552,
+    "level": null,
+    "basis": "threshold rule: statistic 'point'=-0.00787159 >= 0.7 is not met (combine='latest', margin=0.707872)"
+  },
+  "evidence_set": [
+    {
+      "evidence_id": "evi-partition-muscle_fish-20260617-044218-2eefd2d2",
+      "role": "refuting"
+    }
+  ],
+  "scope_limitations": "",
+  "mode": "confirmatory",
+  "renders_to": null,
+  "history": [
+    {
+      "at": "2026-06-17T04:42:18.172655Z",
+      "from_status": "proposed",
+      "to_status": "refuted",
+      "triggered_by": "evi-partition-muscle_fish-20260617-044218-2eefd2d2",
+      "note": "Initial evaluation via DecisionEngine"
+    }
+  ]
+}
