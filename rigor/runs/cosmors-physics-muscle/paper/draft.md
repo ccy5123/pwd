@@ -18,6 +18,13 @@ Planned approaches:
 
 ## Hypotheses and findings
 
+### Parameter-free first-principles COSMO-RS predicts muscle protein-water logK as a direct quantitative predictor: coefficient of determination R^2 = 1 - SS_res/SS_tot >= 0 (beats the no-skill mean baseline)
+- Hypothesis id: `hyp-muscle-predictive` (exploratory)
+- Decision rule (threshold): coefficient of determination R^2 = 1 - SS_res/SS_tot (the UNCALIBRATED physical prediction vs the 1:1 line) >= 0.0 => support (beats the no-skill mean baseline as a direct predictor); < 0.0 => refute
+- **Status: refuted** — confidence 0.06 (credence)
+- Basis: threshold rule: statistic 'point'=-0.0619007 >= 0 is not met (combine='latest', margin=0.0619007)
+- Evidence validity: referent=empirical; data_source(s)=measured
+
 ### Parameter-free first-principles COSMO-RS (amino-acid pseudo-solvent) predicts muscle protein-water logK with RMSE <= 1.0 log units
 - Hypothesis id: `hyp-muscle-useful` (exploratory)
 - Decision rule (threshold): parameter-free COSMO-RS RMSE vs measured logK <= 1.0 log units => support (useful screening); > 1.0 => refute
@@ -40,8 +47,9 @@ Planned approaches:
 - Evidence validity: referent=empirical; data_source(s)=measured
 
 ## Evidence
-- `evi-cosmors-priorwork-20260617-065538-923d9d40` (literature): finding={"searched_via": "agent web_search + repo data/README", "key_prior_art": ["Endo, Bauerfeind, Goss 2012, Environ. Sci. Te
-- `evi-cosmors-validation-record-20260617-065538-e49e81d1` (observation): finding={"phase": "muscle_protein", "method": "first-principles openCOSMO-RS (no fit)", "n": 46, "rmse": 0.9419, "bias_mean_sign
-- `evi-cosmors-hyp-muscle-useful-20260617-065538-ba0e9ee2` (experiment_run): point=0.941892, finding={"phase": "muscle_protein", "method": "first-principles openCOSMO-RS (no fit)", "n": 46, "rmse": 0.9419, "bias_mean_sign
-- `evi-cosmors-hyp-muscle-unbiased-20260617-065538-f74730c3` (experiment_run): point=0.777505, finding={"phase": "muscle_protein", "method": "first-principles openCOSMO-RS (no fit)", "n": 46, "rmse": 0.9419, "bias_mean_sign
-- `evi-cosmors-hyp-muscle-missing-physics-20260617-065538-a4aa3a9c` (experiment_run): point=0.554595, finding={"phase": "muscle_protein", "method": "first-principles openCOSMO-RS (no fit)", "n": 46, "rmse": 0.9419, "bias_mean_sign
+- `evi-cosmors-priorwork-20260617-071447-8858afa8` (literature): finding={"searched_via": "agent web_search + repo data/README", "key_prior_art": ["Endo, Bauerfeind, Goss 2012, Environ. Sci. Te
+- `evi-cosmors-validation-record-20260617-071447-2dadc818` (observation): finding={"phase": "muscle_protein", "method": "first-principles openCOSMO-RS (no fit)", "n": 46, "rmse": 0.9419, "bias_mean_sign
+- `evi-cosmors-hyp-muscle-predictive-20260617-071447-9c56294a` (experiment_run): point=-0.0619007, finding={"phase": "muscle_protein", "method": "first-principles openCOSMO-RS (no fit)", "n": 46, "rmse": 0.9419, "bias_mean_sign
+- `evi-cosmors-hyp-muscle-useful-20260617-071447-d9f2ae09` (experiment_run): point=0.941892, finding={"phase": "muscle_protein", "method": "first-principles openCOSMO-RS (no fit)", "n": 46, "rmse": 0.9419, "bias_mean_sign
+- `evi-cosmors-hyp-muscle-unbiased-20260617-071447-765f5fd5` (experiment_run): point=0.777505, finding={"phase": "muscle_protein", "method": "first-principles openCOSMO-RS (no fit)", "n": 46, "rmse": 0.9419, "bias_mean_sign
+- `evi-cosmors-hyp-muscle-missing-physics-20260617-071447-ac78ce9e` (experiment_run): point=0.554595, finding={"phase": "muscle_protein", "method": "first-principles openCOSMO-RS (no fit)", "n": 46, "rmse": 0.9419, "bias_mean_sign

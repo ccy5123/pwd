@@ -12,7 +12,7 @@
   },
   "evidence_set": [
     {
-      "evidence_id": "evi-cosmors-hyp-muscle-missing-physics-20260617-065538-a4aa3a9c",
+      "evidence_id": "evi-cosmors-hyp-muscle-missing-physics-20260617-071447-ac78ce9e",
       "role": "supporting"
     }
   ],
@@ -21,10 +21,10 @@
   "renders_to": null,
   "history": [
     {
-      "at": "2026-06-17T06:55:38.857082Z",
+      "at": "2026-06-17T07:14:47.032196Z",
       "from_status": "proposed",
       "to_status": "supported",
-      "triggered_by": "evi-cosmors-hyp-muscle-missing-physics-20260617-065538-a4aa3a9c",
+      "triggered_by": "evi-cosmors-hyp-muscle-missing-physics-20260617-071447-ac78ce9e",
       "note": "Initial evaluation via DecisionEngine"
     }
   ]

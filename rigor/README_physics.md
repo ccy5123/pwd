@@ -17,18 +17,30 @@ Pre-committed, field-standard bars (not data-tuned):
 
 | Hypothesis | statistic | verdict |
 |---|---|---|
-| **useful** (RMSE ≤ 1.0) | RMSE = **0.94** | **SUPPORTED** (borderline) |
+| **predictive** (coef-det R² ≥ 0) | **coefficient of determination R² = −0.06** | **REFUTED** |
+| **useful** (RMSE ≤ 1.0) | RMSE = **0.94** | **SUPPORTED** (lax bar — see note) |
 | **unbiased** (\|bias\| ≤ 0.3) | mean signed error = **+0.78** | **REFUTED** |
 | **missing-physics** (polar−nonpolar residual ≥ 0.5) | gap = **+0.55** | **SUPPORTED** |
 
-(also: R² = 0.66, slope = 0.63.)
+> **Two different "R²" — do not confuse them.** The **coefficient of determination**
+> R² = 1 − SS_res/SS_tot (the uncalibrated prediction vs the 1:1 line) is **−0.06**:
+> SS_res (40.8) > SS_tot (38.4), so the a-priori prediction is *worse than predicting
+> the mean* as a direct quantitative predictor. The **Pearson r²** (correlation only,
+> scale/offset-invariant) is **0.66** — the physics captures the right *trend/ranking*
+> but not the *absolute values*. The repo's cosmo script (and my first report) called
+> the Pearson r² "R²", which over-stated accuracy; corrected here. Also slope = 0.63
+> (range compression). The "useful" RMSE ≤ 1.0 bar is lax: the data spread is std = 0.91,
+> so RMSE 0.94 barely exceeds it — consistent with the negative coefficient of
+> determination. The honest predictive verdict is the **REFUTED** coef-det.
 
 ## What the physics says
 
-Parameter-free COSMO-RS gives a **useful but systematically biased** a-priori prediction
-of muscle-protein partitioning. The bias is a **systematic over-prediction localized to
-polar / H-bond solutes** (polar residual +1.04 vs nonpolar +0.39; worst: TBP +2.56,
-dibutyl ether +1.75, N,N-diethylaniline, diazepam, 1-octanol).
+Parameter-free COSMO-RS **captures the trend** of muscle-protein partitioning (Pearson
+r² = 0.66) but, **uncalibrated, is not a quantitatively accurate direct predictor** —
+its coefficient of determination is **negative (−0.06)**, i.e. no better than the mean
+baseline. The cause is a **systematic over-prediction localized to polar / H-bond
+solutes** (polar residual +1.04 vs nonpolar +0.39; worst: TBP +2.56, dibutyl ether
++1.75, N,N-diethylaniline, diazepam, 1-octanol).
 
 **Diagnosed missing physics:** the amino-acid pseudo-solvent models the protein as a
 *homogeneous mixture of fully-exposed side chains*. A real folded protein buries most

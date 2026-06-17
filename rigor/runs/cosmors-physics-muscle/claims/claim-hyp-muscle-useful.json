@@ -12,7 +12,7 @@
   },
   "evidence_set": [
     {
-      "evidence_id": "evi-cosmors-hyp-muscle-useful-20260617-065538-ba0e9ee2",
+      "evidence_id": "evi-cosmors-hyp-muscle-useful-20260617-071447-d9f2ae09",
       "role": "supporting"
     }
   ],
@@ -21,10 +21,10 @@
   "renders_to": null,
   "history": [
     {
-      "at": "2026-06-17T06:55:38.856605Z",
+      "at": "2026-06-17T07:14:47.016373Z",
       "from_status": "proposed",
       "to_status": "supported",
-      "triggered_by": "evi-cosmors-hyp-muscle-useful-20260617-065538-ba0e9ee2",
+      "triggered_by": "evi-cosmors-hyp-muscle-useful-20260617-071447-d9f2ae09",
       "note": "Initial evaluation via DecisionEngine"
     }
   ]

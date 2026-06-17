@@ -74,6 +74,9 @@ _PRIOR_WORK = {
 
 def _rule(statistic: str, op: str, value: float) -> DecisionRule:
     expr = {
+        "coef_det": f"coefficient of determination R^2 = 1 - SS_res/SS_tot (the UNCALIBRATED "
+                    f"physical prediction vs the 1:1 line) >= {value} => support (beats the "
+                    f"no-skill mean baseline as a direct predictor); < {value} => refute",
         "rmse": f"parameter-free COSMO-RS RMSE vs measured logK <= {value} log units "
                 f"=> support (useful screening); > {value} => refute",
         "abs_bias": f"|mean signed error (pred-exp)| <= {value} => support (no systematic "
@@ -88,6 +91,11 @@ def _rule(statistic: str, op: str, value: float) -> DecisionRule:
 
 def build_physics_spec(spec_id: str = _SPEC_ID) -> Spec:
     H = [
+        Hypothesis(id="hyp-muscle-predictive", referent="empirical", mode=HypothesisMode.EXPLORATORY,
+                   statement="Parameter-free first-principles COSMO-RS predicts muscle protein-water "
+                             "logK as a direct quantitative predictor: coefficient of determination "
+                             "R^2 = 1 - SS_res/SS_tot >= 0 (beats the no-skill mean baseline)",
+                   decision_rule=_rule("coef_det", ">=", 0.0)),
         Hypothesis(id="hyp-muscle-useful", referent="empirical", mode=HypothesisMode.EXPLORATORY,
                    statement="Parameter-free first-principles COSMO-RS (amino-acid pseudo-solvent) "
                              "predicts muscle protein-water logK with RMSE <= 1.0 log units",
@@ -180,7 +188,11 @@ def physics_experiment(results_json: Path, source_py: Path,
         resid = pred - exp
         rmse = float(np.sqrt(np.mean(resid ** 2)))
         bias = float(np.mean(resid))
-        r2 = float(np.corrcoef(pred, exp)[0, 1] ** 2)
+        # coefficient of determination (direct, uncalibrated vs 1:1) -- can be negative;
+        # distinct from Pearson r^2 (correlation only, scale/offset-invariant).
+        ss_res = float(np.sum(resid ** 2)); ss_tot = float(np.sum((exp - exp.mean()) ** 2))
+        coef_det = 1.0 - ss_res / ss_tot
+        pearson_r2 = float(np.corrcoef(pred, exp)[0, 1] ** 2)
         slope, intercept = (float(v) for v in np.polyfit(exp, pred, 1))
 
         cls = {n: _classify_polar(smiles.get(n, "")) for n in names}
@@ -198,7 +210,9 @@ def physics_experiment(results_json: Path, source_py: Path,
         base_finding = {
             "phase": "muscle_protein", "method": "first-principles openCOSMO-RS (no fit)",
             "n": len(exp), "rmse": round(rmse, 4), "bias_mean_signed_error": round(bias, 4),
-            "r2": round(r2, 4), "slope": round(slope, 4), "intercept": round(intercept, 4),
+            "coef_det_r2": round(coef_det, 4),       # direct predictive accuracy (vs 1:1); can be <0
+            "pearson_r2": round(pearson_r2, 4),      # correlation/ranking only (scale/offset-invariant)
+            "slope": round(slope, 4), "intercept": round(intercept, 4),
             "polar_mean_resid": round(polar_mean, 4), "nonpolar_mean_resid": round(nonpolar_mean, 4),
             "polar_minus_nonpolar": round(polar_gap, 4),
         }
@@ -211,6 +225,7 @@ def physics_experiment(results_json: Path, source_py: Path,
 
         # three judged hypotheses (engine reads Result.point)
         for hyp_id, point, op, thr, statname in [
+            ("hyp-muscle-predictive", coef_det, ">=", 0.0, "coef_det"),
             ("hyp-muscle-useful", rmse, "<=", _USEFUL_RMSE, "rmse"),
             ("hyp-muscle-unbiased", abs(bias), "<=", _UNBIASED, "abs_bias"),
             ("hyp-muscle-missing-physics", polar_gap, ">=", _POLAR_GAP, "polar_gap"),

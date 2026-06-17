@@ -40,7 +40,8 @@ def main() -> int:
 
     rmse = float(np.sqrt(np.mean((pred - exp) ** 2)))
     bias = float(np.mean(pred - exp))
-    r2 = float(np.corrcoef(pred, exp)[0, 1] ** 2)
+    coef_det = 1.0 - np.sum((exp - pred) ** 2) / np.sum((exp - exp.mean()) ** 2)  # vs 1:1; can be <0
+    pearson_r2 = float(np.corrcoef(pred, exp)[0, 1] ** 2)                          # correlation only
     slope, intercept = (float(v) for v in np.polyfit(exp, pred, 1))
 
     lo, hi = min(exp.min(), pred.min()) - 0.4, max(exp.max(), pred.max()) + 0.4
@@ -67,9 +68,9 @@ def main() -> int:
     ax.set_title("First-principles COSMO-RS vs experiment (muscle protein)\n"
                  "parameter-free; no fit to partition data", fontsize=11)
     ax.text(0.03, 0.97,
-            f"n = {len(exp)}\nRMSE = {rmse:.2f}\nbias = {bias:+.2f}\n"
-            f"R$^2$ = {r2:.2f}\nslope = {slope:.2f}",
-            transform=ax.transAxes, va="top", ha="left", fontsize=9.5,
+            f"n = {len(exp)}\nRMSE = {rmse:.2f}\nbias = {bias:+.2f}\nslope = {slope:.2f}\n"
+            f"coef-det R$^2$ = {coef_det:+.2f}\nPearson r$^2$ = {pearson_r2:.2f}",
+            transform=ax.transAxes, va="top", ha="left", fontsize=9.0,
             bbox=dict(boxstyle="round,pad=0.4", fc="white", ec="0.7"))
     ax.text(0.30, 0.88, "polar solutes sit ABOVE 1:1\n(systematic over-prediction)",
             transform=ax.transAxes, va="top", ha="left", fontsize=8.5, color="#d6432f")
@@ -78,7 +79,8 @@ def main() -> int:
     fig.tight_layout()
     OUT.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT, dpi=150)
-    print(f"saved {OUT}  (RMSE={rmse:.2f}, bias={bias:+.2f}, R2={r2:.2f}, slope={slope:.2f})")
+    print(f"saved {OUT}  (RMSE={rmse:.2f}, bias={bias:+.2f}, coef-det R2={coef_det:+.2f}, "
+          f"Pearson r2={pearson_r2:.2f}, slope={slope:.2f})")
     return 0
 
 

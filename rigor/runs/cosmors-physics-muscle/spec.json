@@ -1,6 +1,6 @@
 {
   "id": "cosmors-physics-muscle",
-  "created_at": "2026-06-17T06:55:38.793184Z",
+  "created_at": "2026-06-17T07:14:46.955164Z",
   "version": 1,
   "raw_proposal": {
     "background": "Tissue partition coefficients are needed a priori for PBPK/bioaccumulation. PP-LFER needs measured Abraham descriptors + coefficients FITTED to partition data. A first-principles route computes log K purely from quantum sigma-profiles + COSMO-RS activity coefficients, with the protein as an explicit amino-acid pseudo-solvent and NO parameter fit to partition data. This run validates that a-priori physical prediction for muscle protein (the one phase with a committed COSMO-RS result; the others need ORCA sigma-profiles, unavailable here).",
@@ -9,6 +9,23 @@
     "expected_output": "A SUPPORTED/REFUTED verdict per hypothesis, plus the systematic error pattern that reveals the missing physics. Honest prior expectation (Endo 2011): a homogeneous pseudo-solvent is ~RMSE 1.0 and over-counts polar interactions. EXPLORATORY (results pre-exist in the repo); a confirmatory test needs an untouched solute set."
   },
   "hypotheses": [
+    {
+      "id": "hyp-muscle-predictive",
+      "statement": "Parameter-free first-principles COSMO-RS predicts muscle protein-water logK as a direct quantitative predictor: coefficient of determination R^2 = 1 - SS_res/SS_tot >= 0 (beats the no-skill mean baseline)",
+      "mode": "exploratory",
+      "decision_rule": {
+        "kind": "threshold",
+        "expression": "coefficient of determination R^2 = 1 - SS_res/SS_tot (the UNCALIBRATED physical prediction vs the 1:1 line) >= 0.0 => support (beats the no-skill mean baseline as a direct predictor); < 0.0 => refute",
+        "params": {
+          "statistic": "coef_det",
+          "op": ">=",
+          "value": 0.0,
+          "combine": "latest"
+        }
+      },
+      "referent": "empirical",
+      "non_circularity": null
+    },
     {
       "id": "hyp-muscle-useful",
       "statement": "Parameter-free first-principles COSMO-RS (amino-acid pseudo-solvent) predicts muscle protein-water logK with RMSE <= 1.0 log units",
@@ -86,6 +103,11 @@
     ]
   },
   "target_claims": [
+    {
+      "id": "tc-hyp-muscle-predictive",
+      "statement": "Parameter-free first-principles COSMO-RS predicts muscle pro",
+      "answers": "hyp-muscle-predictive"
+    },
     {
       "id": "tc-hyp-muscle-useful",
       "statement": "Parameter-free first-principles COSMO-RS (amino-acid pseudo-",

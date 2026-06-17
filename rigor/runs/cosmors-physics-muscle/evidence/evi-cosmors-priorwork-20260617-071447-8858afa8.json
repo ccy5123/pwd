@@ -1,10 +1,10 @@
 {
-  "id": "evi-cosmors-priorwork-20260617-065538-923d9d40",
-  "created_at": "2026-06-17T06:55:38.852299Z",
+  "id": "evi-cosmors-priorwork-20260617-071447-8858afa8",
+  "created_at": "2026-06-17T07:14:47.011817Z",
   "spec_id": "cosmors-physics-muscle",
   "kind": "literature",
   "provenance": {
-    "code_ref": "5039fc4138ffaed6eda044da66f27391eb72786a:rigor/physics_cosmors_capability.py",
+    "code_ref": "9aaec74f125246270a7ca2c9b9422c2e15a5e0b4:rigor/physics_cosmors_capability.py",
     "data_ref": "prior art (Endo 2011/2012; openCOSMO-RS)",
     "data_source": null,
     "seed": null,
