@@ -12,10 +12,8 @@ FROM python:3.11-slim
 
 WORKDIR /workspace
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        gcc g++ \
-    && rm -rf /var/lib/apt/lists/*
-
+# numpy/pandas/scikit-learn install from prebuilt manylinux wheels on linux/amd64,
+# so no apt build toolchain is needed (keeps the image small and the build hermetic).
 COPY requirements-docker.txt /tmp/requirements-docker.txt
 RUN pip install --no-cache-dir -r /tmp/requirements-docker.txt
 
