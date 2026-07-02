@@ -1,0 +1,333 @@
+compound,method,gsolv
+"1,2,4-Trimethylbenzene",GFN1/gbsa,-1.106465973398882
+"1,2-Dichlorobenzene",GFN1/gbsa,-1.99838372939131
+1-Hexanol,GFN1/gbsa,-4.493874870217776
+Benzene,GFN1/gbsa,-0.8463746368312131
+Carbon tetrachloride,GFN1/gbsa,-0.38613043110877504
+Halothane,GFN1/gbsa,-0.911182399009102
+Enflurane,GFN1/gbsa,-2.693204619571964
+Isoflurane,GFN1/gbsa,-5.451938558860701
+Chlorobenzene,GFN1/gbsa,-1.360258779367856
+Cycloheptane,GFN1/gbsa,1.05696632025888
+Cyclohexane,GFN1/gbsa,1.057372329877042
+Ethylbenzene,GFN1/gbsa,-0.736224910404658
+Heptane,GFN1/gbsa,1.179931728253371
+Hexafluorobenzene,GFN1/gbsa,-2.686343936290637
+Hexane,GFN1/gbsa,1.166531386509991
+Methoxyflurane,GFN1/gbsa,-5.059759508887572
+Methylpentafluorobenzene,GFN1/gbsa,-3.404328413828277
+Nonane,GFN1/gbsa,1.285756443023776
+Propylbenzene,GFN1/gbsa,-0.635710723352592
+Tetrachloroethene,GFN1/gbsa,-0.660447109307322
+Toluene,GFN1/gbsa,-0.921522441482873
+Trichloroethene,GFN1/gbsa,-0.9706507015386979
+1-heptanol,GFN1/gbsa,-4.578680629492914
+di-n-butyl ether,GFN1/gbsa,-2.381992562019251
+Cyclooctane,GFN1/gbsa,1.073635801287141
+Octan-1-ol,GFN1/gbsa,-4.035764602348679
+Nonan-1-ol,GFN1/gbsa,-4.427013662648503
+1-Chlorooctane,GFN1/gbsa,-0.38972684645758804
+1-Nonene,GFN1/gbsa,0.6229095516752631
+"1,2,4-Trichlorobenzene",GFN1/gbsa,-1.996458439535487
+Dipentyl ether,GFN1/gbsa,-2.3441856260686538
+2-octanone,GFN1/gbsa,-4.969223581525434
+2-nonanone,GFN1/gbsa,-4.681154146881526
+2-Nitrotoluene,GFN1/gbsa,-5.208912738056392
+4-Nitroanisole,GFN1/gbsa,-8.082447063733419
+4-Chlorophenol,GFN1/gbsa,-6.4328864233006735
+4-Ethyl-3-hexanol,GFN1/gbsa,-3.7002370197149013
+"2,4-Dinitrotoluene",GFN1/gbsa,-8.92583100773085
+Styrene,GFN1/gbsa,-1.4636751378140942
+Octane,GFN1/gbsa,1.231936915643807
+3-Chlorophenol,GFN1/gbsa,-6.607104984917113
+4-bromophenol,GFN1/gbsa,-6.4223045194055235
+4-Iodoaniline,GFN1/gbsa,-6.564778975759553
+"N,N-Diethylaniline",GFN1/gbsa,-2.649439894802235
+4-n-Propylphenol,GFN1/gbsa,-5.6435167290010035
+4-iodophenol,GFN1/gbsa,-7.192787950457903
+Phenanthrene,GFN1/gbsa,-3.15294180555251
+Fluoranthene,GFN1/gbsa,-3.7205541446717167
+Pyrene,GFN1/gbsa,-3.689013568815912
+1-heptyne,GFN1/gbsa,-0.43988634978394103
+tribromomethane,GFN1/gbsa,-1.2589404734177758
+γ-hexachlorocyclohexane,GFN1/gbsa,-11.107050574866223
+2-decanone,GFN1/gbsa,-4.88584881636422
+1-nitrooctane,GFN1/gbsa,-4.768977509086405
+tri-n-butyl phosphate,GFN1/gbsa,-9.953532394697152
+"1,4-dibromobenzene",GFN1/gbsa,-1.851893889381946
+"1,2,3,4-tetrachlorobenzene",GFN1/gbsa,-2.499729888820386
+indene,GFN1/gbsa,-1.581725550818144
+naphthalene,GFN1/gbsa,-2.016541986189724
+dibenzofuran,GFN1/gbsa,-3.0195873215309885
+dibenzothiophene,GFN1/gbsa,-2.684343054818147
+chrysene,GFN1/gbsa,-4.318006558574922
+benzo[b]fluoranthene,GFN1/gbsa,-4.7393285390308115
+benzo[ghi]perylene,GFN1/gbsa,-5.371371303478481
+anisole,GFN1/gbsa,-3.3647154028091864
+valerophenone,GFN1/gbsa,-6.117884705865053
+benzophenone,GFN1/gbsa,-6.977121619944996
+di-n-propyl phthalate,GFN1/gbsa,-11.197108094386833
+1-nitronaphthalene,GFN1/gbsa,-5.886676520466777
+4-chlorobenzyl alcohol,GFN1/gbsa,-5.596533290942124
+2-phenylphenol,GFN1/gbsa,-7.95673104408349
+4-fluorophenol,GFN1/gbsa,-7.004715634195042
+bisphenol A,GFN1/gbsa,-11.961544202380942
+4-nitroaniline,GFN1/gbsa,-12.711891789551515
+2-chloroaniline,GFN1/gbsa,-4.968582768707125
+4-aminobiphenyl,GFN1/gbsa,-6.59933079034882
+indole,GFN1/gbsa,-4.897392458123022
+carbazole,GFN1/gbsa,-5.403228444447098
+metolachlor,GFN1/gbsa,-10.931321604106856
+atrazine,GFN1/gbsa,-10.058892334259054
+diazepam,GFN1/gbsa,-11.315417361128473
+estrone,GFN1/gbsa,-10.23639482994007
+endosulfan α,GFN1/gbsa,-21.050952157214184
+"1,2,4-Trimethylbenzene",GFN1/alpb,-0.548291842153952
+"1,2-Dichlorobenzene",GFN1/alpb,-1.578865550538808
+1-Hexanol,GFN1/alpb,-5.251973831336839
+Benzene,GFN1/alpb,-0.5049602824543601
+Carbon tetrachloride,GFN1/alpb,-0.6682465454251401
+Halothane,GFN1/alpb,-0.526531697500736
+Enflurane,GFN1/alpb,-1.613341761588737
+Isoflurane,GFN1/alpb,-3.3596957581428155
+Chlorobenzene,GFN1/alpb,-0.99703550845578
+Cycloheptane,GFN1/alpb,0.865592895010116
+Cyclohexane,GFN1/alpb,0.905541142672313
+Ethylbenzene,GFN1/alpb,-0.338783020887153
+Heptane,GFN1/alpb,0.941830483874423
+Hexafluorobenzene,GFN1/alpb,-1.1580797853085452
+Hexane,GFN1/alpb,0.949620276433929
+Methoxyflurane,GFN1/alpb,-4.534939406190253
+Methylpentafluorobenzene,GFN1/alpb,-2.451526518044715
+Nonane,GFN1/alpb,0.8528792464055801
+Propylbenzene,GFN1/alpb,-0.387887936980669
+Tetrachloroethene,GFN1/alpb,-0.8012740363892891
+Toluene,GFN1/alpb,-0.46972593385590106
+Trichloroethene,GFN1/alpb,-0.920158934706881
+1-heptanol,GFN1/alpb,-4.9376122446172435
+di-n-butyl ether,GFN1/alpb,-2.726649837727456
+Cyclooctane,GFN1/alpb,0.8645800521859951
+Octan-1-ol,GFN1/alpb,-4.748393694687115
+Nonan-1-ol,GFN1/alpb,-5.4365140324706065
+1-Chlorooctane,GFN1/alpb,-0.473150235408685
+1-Nonene,GFN1/alpb,0.458346891472853
+"1,2,4-Trichlorobenzene",GFN1/alpb,-1.723792807169439
+Dipentyl ether,GFN1/alpb,-2.8238445492326973
+2-octanone,GFN1/alpb,-4.710365178406019
+2-nonanone,GFN1/alpb,-4.737428611206242
+2-Nitrotoluene,GFN1/alpb,-6.05913086374755
+4-Nitroanisole,GFN1/alpb,-8.758597452106324
+4-Chlorophenol,GFN1/alpb,-7.096640212618801
+4-Ethyl-3-hexanol,GFN1/alpb,-3.629044723064813
+"2,4-Dinitrotoluene",GFN1/alpb,-10.885944662506532
+Styrene,GFN1/alpb,-1.024436508467534
+Octane,GFN1/alpb,0.872552070849065
+3-Chlorophenol,GFN1/alpb,-7.241593231631427
+4-bromophenol,GFN1/alpb,-7.404254033791584
+4-Iodoaniline,GFN1/alpb,-7.217449270020999
+"N,N-Diethylaniline",GFN1/alpb,-2.545576069728241
+4-n-Propylphenol,GFN1/alpb,-6.409385932636677
+4-iodophenol,GFN1/alpb,-7.602735658226652
+Phenanthrene,GFN1/alpb,-2.3680575907654884
+Fluoranthene,GFN1/alpb,-2.878462636408449
+Pyrene,GFN1/alpb,-2.6767882963821
+1-heptyne,GFN1/alpb,-0.329045555853303
+tribromomethane,GFN1/alpb,-1.774865572661685
+γ-hexachlorocyclohexane,GFN1/alpb,-8.89580588681784
+2-decanone,GFN1/alpb,-4.822021779217305
+1-nitrooctane,GFN1/alpb,-6.161168502717109
+tri-n-butyl phosphate,GFN1/alpb,-12.05188559442297
+"1,4-dibromobenzene",GFN1/alpb,-2.115786344774372
+"1,2,3,4-tetrachlorobenzene",GFN1/alpb,-2.17026548514229
+indene,GFN1/alpb,-1.043611267722557
+naphthalene,GFN1/alpb,-1.4724204383279
+dibenzofuran,GFN1/alpb,-3.157752969766266
+dibenzothiophene,GFN1/alpb,-2.092111696517534
+chrysene,GFN1/alpb,-3.3846299813700114
+benzo[b]fluoranthene,GFN1/alpb,-3.552246387765543
+benzo[ghi]perylene,GFN1/alpb,-4.11945176847298
+anisole,GFN1/alpb,-3.0450149193168707
+valerophenone,GFN1/alpb,-5.3999119269776985
+benzophenone,GFN1/alpb,-5.960918985881179
+di-n-propyl phthalate,GFN1/alpb,-11.074773336074887
+1-nitronaphthalene,GFN1/alpb,-6.620145903938
+4-chlorobenzyl alcohol,GFN1/alpb,-5.673206011489775
+2-phenylphenol,GFN1/alpb,-7.777833171071883
+4-fluorophenol,GFN1/alpb,-7.348423661351222
+bisphenol A,GFN1/alpb,-13.463967856537678
+4-nitroaniline,GFN1/alpb,-14.712186955909964
+2-chloroaniline,GFN1/alpb,-5.617373903359519
+4-aminobiphenyl,GFN1/alpb,-7.320180707413808
+indole,GFN1/alpb,-4.663993330698828
+carbazole,GFN1/alpb,-4.557271465056105
+metolachlor,GFN1/alpb,-10.22623858924496
+atrazine,GFN1/alpb,-8.853286169397034
+diazepam,GFN1/alpb,-9.84575388610211
+estrone,GFN1/alpb,-11.288269295561912
+endosulfan α,GFN1/alpb,-16.589507922872833
+"1,2,4-Trimethylbenzene",GFN2/gbsa,-1.712060115774207
+"1,2-Dichlorobenzene",GFN2/gbsa,-3.699395838880329
+1-Hexanol,GFN2/gbsa,-4.153355951103635
+Benzene,GFN2/gbsa,-0.8929407293218451
+Carbon tetrachloride,GFN2/gbsa,0.369060558550429
+Halothane,GFN2/gbsa,-0.7532649342424009
+Enflurane,GFN2/gbsa,-0.6879631731343699
+Isoflurane,GFN2/gbsa,-1.523009060546358
+Chlorobenzene,GFN2/gbsa,-2.114209438502714
+Cycloheptane,GFN2/gbsa,-0.6539458405908709
+Cyclohexane,GFN2/gbsa,-0.530943418978015
+Ethylbenzene,GFN2/gbsa,-1.320691002962539
+Heptane,GFN2/gbsa,-0.9710086929131619
+Hexafluorobenzene,GFN2/gbsa,1.070220288625411
+Hexane,GFN2/gbsa,-0.834559650140667
+Methoxyflurane,GFN2/gbsa,-3.550842648250016
+Methylpentafluorobenzene,GFN2/gbsa,-2.19937539547396
+Nonane,GFN2/gbsa,-1.376362020747368
+Propylbenzene,GFN2/gbsa,-1.520630764413327
+Tetrachloroethene,GFN2/gbsa,0.047720562213526004
+Toluene,GFN2/gbsa,-1.220940493108455
+Trichloroethene,GFN2/gbsa,-1.291847901927561
+1-heptanol,GFN2/gbsa,-4.086571939064033
+di-n-butyl ether,GFN2/gbsa,-2.358687171433463
+Cyclooctane,GFN2/gbsa,-0.7763283441801
+Octan-1-ol,GFN2/gbsa,-4.195212409081693
+Nonan-1-ol,GFN2/gbsa,-4.752222038617346
+1-Chlorooctane,GFN2/gbsa,-2.772681118730095
+1-Nonene,GFN2/gbsa,-1.492726618900247
+"1,2,4-Trichlorobenzene",GFN2/gbsa,-3.204145239126353
+Dipentyl ether,GFN2/gbsa,-2.779469766488258
+2-octanone,GFN2/gbsa,-5.743154410854361
+2-nonanone,GFN2/gbsa,-5.947572097236945
+2-Nitrotoluene,GFN2/gbsa,-7.344684660897393
+4-Nitroanisole,GFN2/gbsa,-9.61455891980843
+4-Chlorophenol,GFN2/gbsa,-5.507030844547609
+4-Ethyl-3-hexanol,GFN2/gbsa,-3.5844720541022057
+"2,4-Dinitrotoluene",GFN2/gbsa,-12.60737643506051
+Styrene,GFN2/gbsa,-1.411437529875184
+Octane,GFN2/gbsa,-1.199991521181922
+3-Chlorophenol,GFN2/gbsa,-5.658305428759303
+4-bromophenol,GFN2/gbsa,-5.6545525911045145
+4-Iodoaniline,GFN2/gbsa,-5.586658612280298
+"N,N-Diethylaniline",GFN2/gbsa,-2.580621504232214
+4-n-Propylphenol,GFN2/gbsa,-4.810420056480481
+4-iodophenol,GFN2/gbsa,-6.087509387866869
+Phenanthrene,GFN2/gbsa,-2.3168072828968542
+Fluoranthene,GFN2/gbsa,-2.736494908004626
+Pyrene,GFN2/gbsa,-2.545834862597458
+1-heptyne,GFN2/gbsa,-1.649903136727473
+tribromomethane,GFN2/gbsa,-1.684465467740071
+γ-hexachlorocyclohexane,GFN2/gbsa,-12.91953347849661
+2-decanone,GFN2/gbsa,-6.16525784019062
+1-nitrooctane,GFN2/gbsa,-7.1890053738965864
+tri-n-butyl phosphate,GFN2/gbsa,-12.354924907616223
+"1,4-dibromobenzene",GFN2/gbsa,-2.831361876129385
+"1,2,3,4-tetrachlorobenzene",GFN2/gbsa,-4.153915053465018
+indene,GFN2/gbsa,-1.757855571992047
+naphthalene,GFN2/gbsa,-1.629635679108007
+dibenzofuran,GFN2/gbsa,-2.588552646959024
+dibenzothiophene,GFN2/gbsa,-2.465957764831272
+chrysene,GFN2/gbsa,-3.040209247689392
+benzo[b]fluoranthene,GFN2/gbsa,-3.406559653854667
+benzo[ghi]perylene,GFN2/gbsa,-3.446059779769712
+anisole,GFN2/gbsa,-2.0820107625831588
+valerophenone,GFN2/gbsa,-6.076897723729886
+benzophenone,GFN2/gbsa,-6.654549515334174
+di-n-propyl phthalate,GFN2/gbsa,-13.453710640859345
+1-nitronaphthalene,GFN2/gbsa,-8.054499402981225
+4-chlorobenzyl alcohol,GFN2/gbsa,-5.235103699285756
+2-phenylphenol,GFN2/gbsa,-5.4471564269783395
+4-fluorophenol,GFN2/gbsa,-5.44716319152536
+bisphenol A,GFN2/gbsa,-9.202838004637586
+4-nitroaniline,GFN2/gbsa,-14.222754546185435
+2-chloroaniline,GFN2/gbsa,-4.100049179525327
+4-aminobiphenyl,GFN2/gbsa,-4.578862114508349
+indole,GFN2/gbsa,-3.116082824857889
+carbazole,GFN2/gbsa,-3.459407994340462
+metolachlor,GFN2/gbsa,-9.440131806203347
+atrazine,GFN2/gbsa,-10.072355921379527
+diazepam,GFN2/gbsa,-9.981485229261052
+estrone,GFN2/gbsa,-9.83685205535078
+endosulfan α,GFN2/gbsa,-17.980343748694647
+"1,2,4-Trimethylbenzene",GFN2/alpb,-1.156439660642682
+"1,2-Dichlorobenzene",GFN2/alpb,-4.095585660317643
+1-Hexanol,GFN2/alpb,-5.3691481834185515
+Benzene,GFN2/alpb,-0.586137599576343
+Carbon tetrachloride,GFN2/alpb,0.06528217027705101
+Halothane,GFN2/alpb,0.225983723049322
+Enflurane,GFN2/alpb,-3.4933304462681427
+Isoflurane,GFN2/alpb,-4.273462988459664
+Chlorobenzene,GFN2/alpb,-2.167643949578116
+Cycloheptane,GFN2/alpb,-0.14447210552766102
+Cyclohexane,GFN2/alpb,-0.08843335429114299
+Ethylbenzene,GFN2/alpb,-0.765778445753986
+Heptane,GFN2/alpb,-0.31221023862904906
+Hexafluorobenzene,GFN2/alpb,-0.821599115650189
+Hexane,GFN2/alpb,-0.257370942608126
+Methoxyflurane,GFN2/alpb,-5.003448544874362
+Methylpentafluorobenzene,GFN2/alpb,-4.226930497820963
+Nonane,GFN2/alpb,-0.501345375670335
+Propylbenzene,GFN2/alpb,-0.8368739911839269
+Tetrachloroethene,GFN2/alpb,-0.245327111542897
+Toluene,GFN2/alpb,-0.8227377564585581
+Trichloroethene,GFN2/alpb,-1.877335358254274
+1-heptanol,GFN2/alpb,-5.167311348054126
+di-n-butyl ether,GFN2/alpb,-2.2527106201928553
+Cyclooctane,GFN2/alpb,-0.1996798898936
+Octan-1-ol,GFN2/alpb,-4.8503595309393495
+Nonan-1-ol,GFN2/alpb,-5.605507307191268
+1-Chlorooctane,GFN2/alpb,-2.599779269916008
+1-Nonene,GFN2/alpb,-0.697076101050844
+"1,2,4-Trichlorobenzene",GFN2/alpb,-3.751263941909643
+Dipentyl ether,GFN2/alpb,-2.5011542865597023
+2-octanone,GFN2/alpb,-5.601851603537117
+2-nonanone,GFN2/alpb,-5.440568306623725
+2-Nitrotoluene,GFN2/alpb,-7.020676208893367
+4-Nitroanisole,GFN2/alpb,-9.732641075355243
+4-Chlorophenol,GFN2/alpb,-7.307787624919467
+4-Ethyl-3-hexanol,GFN2/alpb,-4.077339312550791
+"2,4-Dinitrotoluene",GFN2/alpb,-13.047639866925222
+Styrene,GFN2/alpb,-0.942723367685541
+Octane,GFN2/alpb,-0.420911314093438
+3-Chlorophenol,GFN2/alpb,-7.434525905048589
+4-bromophenol,GFN2/alpb,-7.455105427913828
+4-Iodoaniline,GFN2/alpb,-6.8260568628202325
+"N,N-Diethylaniline",GFN2/alpb,-1.954882905414058
+4-n-Propylphenol,GFN2/alpb,-5.703677691025015
+4-iodophenol,GFN2/alpb,-7.795438687822665
+Phenanthrene,GFN2/alpb,-1.489670517038339
+Fluoranthene,GFN2/alpb,-1.843778240811375
+Pyrene,GFN2/alpb,-1.645648637002635
+1-heptyne,GFN2/alpb,-1.248915458032257
+tribromomethane,GFN2/alpb,-1.6300671398637
+γ-hexachlorocyclohexane,GFN2/alpb,-14.567417810212028
+2-decanone,GFN2/alpb,-5.805368787521815
+1-nitrooctane,GFN2/alpb,-7.133905526098719
+tri-n-butyl phosphate,GFN2/alpb,-10.357747660286288
+"1,4-dibromobenzene",GFN2/alpb,-2.572074869302754
+"1,2,3,4-tetrachlorobenzene",GFN2/alpb,-4.773940147697671
+indene,GFN2/alpb,-1.369968490933654
+naphthalene,GFN2/alpb,-1.050902394567488
+dibenzofuran,GFN2/alpb,-1.677533323733824
+dibenzothiophene,GFN2/alpb,-0.459293058955688
+chrysene,GFN2/alpb,-1.973415606872916
+benzo[b]fluoranthene,GFN2/alpb,-2.253261996035921
+benzo[ghi]perylene,GFN2/alpb,-2.2575463469913983
+anisole,GFN2/alpb,-1.966205292519532
+valerophenone,GFN2/alpb,-5.616273856237178
+benzophenone,GFN2/alpb,-5.943389950554825
+di-n-propyl phthalate,GFN2/alpb,-13.085524082491697
+1-nitronaphthalene,GFN2/alpb,-7.370147436210307
+4-chlorobenzyl alcohol,GFN2/alpb,-6.59753172204582
+2-phenylphenol,GFN2/alpb,-6.331688654299385
+4-fluorophenol,GFN2/alpb,-7.618944542001333
+bisphenol A,GFN2/alpb,-11.282123173094119
+4-nitroaniline,GFN2/alpb,-16.189005142972242
+2-chloroaniline,GFN2/alpb,-5.071024790164009
+4-aminobiphenyl,GFN2/alpb,-4.79866998245844
+indole,GFN2/alpb,-3.47736259058289
+carbazole,GFN2/alpb,-3.361227990166236
+metolachlor,GFN2/alpb,-10.03750757741231
+atrazine,GFN2/alpb,-11.511564313228684
+diazepam,GFN2/alpb,-10.21786836592067
+estrone,GFN2/alpb,-10.172019432758342
+endosulfan α,GFN2/alpb,-24.206121863190187
