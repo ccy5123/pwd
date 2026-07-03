@@ -65,6 +65,10 @@ M_BSA = 66.463            # kg/mol (BSA monomer)
 #         = -ΔG/(2.303*0.616) - 1.823
 #         = -ΔG/1.418 - 1.823
 LOG_M_BSA = math.log10(M_BSA)  # = 1.823
+# [FIX4] xTB Gsolv 가산 스케일. 1.0=기존. Vina 스코어는 수용액 결합에 경험적 학습됨 ->
+#        xTB Gsolv(|mean|~4.4 kcal/mol) 1:1 가산은 수상 desolvation 이중계상 의심
+#        (reference-state 불일치). knob은 desolvation 감도분석용(재해석은 reinterpret.py).
+GSOLV_SCALE = 1.0
 
 # Smoke test criteria
 SMOKE_TEST_CRITERIA = {
@@ -359,45 +363,46 @@ def prepare_ligand(smiles: str, out_pdbqt: Path) -> bool:
 # =============================================================================
 # POSE DEDUPLICATION (RMSD)
 # =============================================================================
-def deduplicate_poses(coords: List[np.ndarray], energies: List[float]) -> Tuple[List[np.ndarray], List[float]]:
-    """Remove duplicate poses based on heavy-atom RMSD < 2.0 Å."""
-    from rdkit import Chem
-    from rdkit.Chem import AllChem
-
+def deduplicate_poses(coords: List[np.ndarray], energies: List[float], boxes: List[int]) -> Tuple[List[np.ndarray], List[float], List[int]]:
+    """Remove duplicate poses by heavy-atom RMSD < 2.0 A. Preserves box id. [FIX2/3]"""
     n = len(coords)
     keep = [True] * n
     unique_coords = []
     unique_energies = []
+    unique_boxes = []
 
     for i in range(n):
         if not keep[i]:
             continue
         unique_coords.append(coords[i])
         unique_energies.append(energies[i])
+        unique_boxes.append(boxes[i])  # [FIX2] box 식별자 보존
 
         for j in range(i+1, n):
             if keep[j]:
-                # Simple RMSD calculation
                 diff = coords[i] - coords[j]
-                rmsd = np.sqrt(np.mean(diff**2))
+                # [FIX3] heavy-atom RMSD = sqrt(mean over atoms of per-atom squared distance).
+                #        기존 np.mean(diff**2)는 3N으로 나눠 RMSD가 √3배 과소평가 -> 과잉 병합.
+                #        sum(axis=1)로 per-atom 거리제곱을 먼저 합산해 교정(2.0A 컷오프 의도와 일치).
+                rmsd = np.sqrt(np.mean(np.sum(diff**2, axis=1)))
                 if rmsd < RMSD_CUTOFF:
                     keep[j] = False  # Keep only the lowest energy (i comes first)
 
-    return unique_coords, unique_energies
+    return unique_coords, unique_energies, unique_boxes
 
 # =============================================================================
 # DOCKING (SINGLE COMPOUND)
 # =============================================================================
 def dock_compound(rec_pdbqt: Path, lig_pdbqt: Path, centers: List[Tuple],
-                  single_box: bool = False) -> List[Tuple[float, np.ndarray]]:
-    """Dock compound against all boxes. Returns list of (ΔG, coords)."""
+                  single_box: bool = False) -> List[Tuple[float, np.ndarray, int]]:
+    """Dock compound against all boxes. Returns list of (ΔG, coords, box_idx). [FIX2]"""
     from vina import Vina
     import tempfile
 
     results = []
     centers_to_use = [centers[0]] if single_box else centers
 
-    for cx, cy, cz in centers_to_use:
+    for box_idx, (cx, cy, cz) in enumerate(centers_to_use):  # [FIX2] box 식별자
         v = Vina(sf_name="vina", seed=SEED, verbosity=0)
         v.set_receptor(str(rec_pdbqt))
         v.set_receptor(str(rec_pdbqt))  # Workaround for some versions
@@ -429,7 +434,7 @@ def dock_compound(rec_pdbqt: Path, lig_pdbqt: Path, centers: List[Tuple],
                 continue  # Skip if no coordinates
             coords = np.array([[float(line[30:38]), float(line[38:46]), float(line[46:54])]
                                for line in coord_lines])
-            results.append((float(dG), coords))
+            results.append((float(dG), coords, box_idx))  # [FIX2]
 
     return results
 
@@ -584,7 +589,7 @@ def run_smoke_test(valid_df: pd.DataFrame, rec_pdbqt: Path, centers: List[Tuple]
             results.append(result)
             continue
 
-        best_dG = min(e for e, _ in dock_results)
+        best_dG = min(e for e, _, _ in dock_results)  # [FIX2] 3-tuple
         result['dock_time'] = dock_time
         result['dG'] = best_dG
 
@@ -792,28 +797,29 @@ def run_full_docking(valid_df: pd.DataFrame, rec_pdbqt: Path, centers: List[Tupl
 
             # (b) Deduplicate poses by RMSD
             # Separate coords and energies
-            all_coords = [coords for _, coords in dock_results]
-            all_energies = [dG for dG, _ in dock_results]
+            all_coords = [c for _, c, _ in dock_results]        # [FIX2] 3-tuple
+            all_energies = [dG for dG, _, _ in dock_results]    # [FIX2]
+            all_boxes = [b for _, _, b in dock_results]         # [FIX2] 실제 box 식별자
 
             # Check atom count consistency
             n_atoms_list = [len(c) for c in all_coords]
             if len(set(n_atoms_list)) > 1:
                 LOG.warning(f"Variable atom count in poses: {set(n_atoms_list)}, skipping dedup")
                 # Still save, but without dedup
-                unique_coords, unique_energies = all_coords, all_energies
+                unique_coords, unique_energies, unique_boxes = all_coords, all_energies, all_boxes
             else:
-                unique_coords, unique_energies = deduplicate_poses(all_coords, all_energies)
+                unique_coords, unique_energies, unique_boxes = deduplicate_poses(all_coords, all_energies, all_boxes)
 
             LOG.info(f"  After RMSD deduplication: {len(unique_coords)} poses")
 
             # (c) Append deduplicated poses to CSV
             rows_to_append = []
-            for pose_idx, (dG, coords) in enumerate(zip(unique_energies, unique_coords)):
+            for pose_idx, (dG, coords, box_id) in enumerate(zip(unique_energies, unique_coords, unique_boxes)):
                 rows_to_append.append({
                     'compound': compound,
                     'SMILES': smiles,
-                    'box': pose_idx // len(unique_coords),  # Re-index after dedup
-                    'pose': pose_idx % len(unique_coords),
+                    'box': box_id,              # [FIX2] 실제 box(0..8), 기존 pose_idx//len(=0) 폐기
+                    'pose': pose_idx,
                     'dG': dG
                 })
 
@@ -1006,7 +1012,11 @@ def run_factorial_analysis(valid_df: pd.DataFrame, docking_df: pd.DataFrame, gso
                         continue
 
                 # Correction
-                dG_corr = dG_contact - gsolv
+                # [FIX1] LOG_M_BSA(-1.823)=몰->질량기준 변환. albumin_exp가 질량기준
+                #        log K_BSA/w (L/kg)일 때만 정합(Endo&Goss2011/UFZ 정의 확인 필요).
+                #        offset은 순수 가산상수 -> pearson/calR2 불변, absR2/bias만 이동.
+                # [FIX4] GSOLV_SCALE=1.0 기본. 이중계상 caveat는 상단 상수 주석 참조.
+                dG_corr = dG_contact - GSOLV_SCALE * gsolv
                 logK_pred = -dG_corr / (2.302585 * RT) - LOG_M_BSA
 
                 pred_values.append(logK_pred)
